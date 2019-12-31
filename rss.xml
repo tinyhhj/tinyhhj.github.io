@@ -1,4 +1,129 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Gatsby Starter Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 26 Dec 2019 19:04:21 GMT</lastBuildDate><item><title><![CDATA[Spring Chap. 2]]></title><description><![CDATA[…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/spring2/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/spring2/</guid><pubDate>Thu, 26 Dec 2019 17:31:38 GMT</pubDate><content:encoded>&lt;h1&gt;2장&lt;/h1&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Gatsby Starter Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 31 Dec 2019 07:33:36 GMT</lastBuildDate><item><title><![CDATA[[algospot]boggle]]></title><description><![CDATA[BOGGLE 재귀호출]]></description><link>https://gatsby-starter-blog-demo.netlify.com/algospot-boggle/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/algospot-boggle/</guid><pubDate>Tue, 31 Dec 2019 17:31:38 GMT</pubDate><content:encoded>&lt;h1&gt;&lt;a href=&quot;https://algospot.com/judge/problem/read/BOGGLE&quot;&gt;BOGGLE&lt;/a&gt;&lt;/h1&gt;
+&lt;h2&gt;재귀호출&lt;/h2&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;package algospot.boggle;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
+public class Main {
+    static char[][] arr;
+    static int[][] directions = {
+            {-1,-1},
+            {-1,0},
+            {-1,1},
+            {0,-1},
+            {0,1},
+            {1,-1},
+            {1,0},
+            {1,1}
+    };
+    static int[][][] cache ;
+    public static void main(String[] args) throws IOException {
+
+//        BufferedReader br = new BufferedReader((new InputStreamReader(new FileInputStream(&amp;quot;algospot/boggle/test.txt&amp;quot;))));
+        BufferedReader br = new BufferedReader((new InputStreamReader(System.in)));
+        int tc = Integer.valueOf(br.readLine());
+        for( int i = 0 ; i &amp;lt; tc ; i++) {
+            arr = new char[5][5];
+            arr[0] = br.readLine().toCharArray();
+            arr[1] = br.readLine().toCharArray();
+            arr[2] = br.readLine().toCharArray();
+            arr[3] = br.readLine().toCharArray();
+            arr[4] = br.readLine().toCharArray();
+
+
+            int wordNum = Integer.valueOf(br.readLine());
+
+            for( int j = 0 ; j &amp;lt; wordNum ; j++) {
+                cache = new int[5][5][10];
+                String word = br.readLine();
+                if( findWord(word)) {
+                    System.out.println(String.format(&amp;quot;%s %s&amp;quot;,word,&amp;quot;YES&amp;quot;));
+                } else {
+                    System.out.println(String.format(&amp;quot;%s %s&amp;quot;,word,&amp;quot;NO&amp;quot;));
+                }
+            }
+        }
+
+    }
+
+    public static boolean findWord(String word) {
+        return IntStream
+                .range(0,25)
+                .anyMatch(i-&amp;gt;{
+                    int y = i / 5;
+                    int x = i % 5;
+                    return findWord(y,x,word.toCharArray());
+                });
+    }
+
+    public static boolean findWord(int y, int x , char[] word) {
+        if( cache[y][x][word.length-1] == 1) {
+            return true;
+        } else if( cache[y][x][word.length-1] == -1) {
+            return false;
+        }
+        if(word.length == 1 ) {
+            return word[0] == arr[y][x];
+        }
+
+        if( word[0] == arr[y][x]) {
+            boolean res = Stream.of(directions)
+                    .anyMatch(i-&amp;gt;{
+                        int yy = y + i[0];
+                        int xx = x + i[1];
+                        if( yy &amp;gt;= 0 &amp;amp;&amp;amp; yy &amp;lt; 5 &amp;amp;&amp;amp; xx &amp;gt;=0 &amp;amp;&amp;amp; xx &amp;lt; 5) return findWord(yy,xx,new String(word).substring(1).toCharArray());
+                        return false;
+                    });
+            if(res) cache[y][x][word.length-1]= 1;
+            else cache[y][x][word.length-1] = -1;
+            return res;
+        }
+
+        return false;
+    }
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[[boj]1074]]></title><description><![CDATA[Z 재귀호출 문제: z로 탐색할 때, n,r,c가 주어졌을 때 순서를 리턴
+문제의 조각: nrc가 주어졌을때 순서를 리턴
+기저조건 : n이 0인경우는 무조건 순서가 1
+그 외 : 1 2 3 4 구역 나누기
+1구역이라면 1구역 내에서 순서 리턴…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/boj-1074/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/boj-1074/</guid><pubDate>Tue, 31 Dec 2019 17:31:38 GMT</pubDate><content:encoded>&lt;h1&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/1074&quot;&gt;Z&lt;/a&gt;&lt;/h1&gt;
+&lt;h2&gt;재귀호출&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;문제: z로 탐색할 때, n,r,c가 주어졌을 때 순서를 리턴
+문제의 조각: nrc가 주어졌을때 순서를 리턴
+기저조건 : n이 0인경우는 무조건 순서가 1
+그 외 : 1 2 3 4 구역 나누기
+1구역이라면 1구역 내에서 순서 리턴
+2구역이라면 1구역 갯수 + 2구역 내에서 순서 리턴
+3구역이라면 2구역 까지 갯수 + 3구역 내에서 순서
+4구역이라면 3구역 까지 갯수 + 4구역 내에서 순서&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;static int getZOrder(int n , int r , int c) {
+        if( n == 0) {
+            return 1;
+        }
+        int num = 1 &amp;lt;&amp;lt; n-1;
+        //1
+        if( num &amp;gt; r &amp;amp;&amp;amp; num &amp;gt; c) {
+           return getZOrder(n-1, r,c);
+        }
+        //2
+        else if( num &amp;gt; r &amp;amp;&amp;amp; num &amp;lt;= c) {
+            return (num *num) + getZOrder(n-1, r, c- num);
+        }
+        //3
+        else if( num &amp;lt;= r &amp;amp;&amp;amp; num &amp;gt; c) {
+            return (num *num * 2) + getZOrder(n-1,r-num , c);
+        }
+        //4
+        else {
+            return (num *num * 3) + getZOrder(n-1, r-num, c-num);
+        }
+    }&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[Spring Chap. 2]]></title><description><![CDATA[…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/spring2/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/spring2/</guid><pubDate>Thu, 26 Dec 2019 17:31:38 GMT</pubDate><content:encoded>&lt;h1&gt;2장&lt;/h1&gt;
 &lt;p&gt;테스트&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;단위 테스트를 이용해서 기존의 코드가 정상 동작하는것을 확신할 수 있고, 테스트하고자 하는 기능에 집중해 테스트 할 수 있으므로, 장애 대응이 용이하다.
 단위 테스트를 이용하면 많은 수의 테스트 케이스를 일일이 수행하는 작업과 결과값을 검증하는 작업을 자동화할 수 있다.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -199,6 +324,94 @@ public class Main {
         }
         return false;
     }
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;해결&lt;/h2&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;package algospot.boggle;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
+public class Main {
+    static char[][] arr;
+    static int[][] directions = {
+            {-1,-1},
+            {-1,0},
+            {-1,1},
+            {0,-1},
+            {0,1},
+            {1,-1},
+            {1,0},
+            {1,1}
+    };
+    static int[][][] cache ;
+    public static void main(String[] args) throws IOException {
+
+//        BufferedReader br = new BufferedReader((new InputStreamReader(new FileInputStream(&amp;quot;algospot/boggle/test.txt&amp;quot;))));
+        BufferedReader br = new BufferedReader((new InputStreamReader(System.in)));
+        int tc = Integer.valueOf(br.readLine());
+        for( int i = 0 ; i &amp;lt; tc ; i++) {
+            arr = new char[5][5];
+            arr[0] = br.readLine().toCharArray();
+            arr[1] = br.readLine().toCharArray();
+            arr[2] = br.readLine().toCharArray();
+            arr[3] = br.readLine().toCharArray();
+            arr[4] = br.readLine().toCharArray();
+
+
+            int wordNum = Integer.valueOf(br.readLine());
+
+            for( int j = 0 ; j &amp;lt; wordNum ; j++) {
+                cache = new int[5][5][10];
+                String word = br.readLine();
+                if( findWord(word)) {
+                    System.out.println(String.format(&amp;quot;%s %s&amp;quot;,word,&amp;quot;YES&amp;quot;));
+                } else {
+                    System.out.println(String.format(&amp;quot;%s %s&amp;quot;,word,&amp;quot;NO&amp;quot;));
+                }
+            }
+        }
+
+    }
+
+    public static boolean findWord(String word) {
+        return IntStream
+                .range(0,25)
+                .anyMatch(i-&amp;gt;{
+                    int y = i / 5;
+                    int x = i % 5;
+                    return findWord(y,x,word.toCharArray());
+                });
+    }
+
+    public static boolean findWord(int y, int x , char[] word) {
+        if( cache[y][x][word.length-1] == 1) {
+            return true;
+        } else if( cache[y][x][word.length-1] == -1) {
+            return false;
+        }
+        if(word.length == 1 ) {
+            return word[0] == arr[y][x];
+        }
+
+        if( word[0] == arr[y][x]) {
+            boolean res = Stream.of(directions)
+                    .anyMatch(i-&amp;gt;{
+                        int yy = y + i[0];
+                        int xx = x + i[1];
+                        if( yy &amp;gt;= 0 &amp;amp;&amp;amp; yy &amp;lt; 5 &amp;amp;&amp;amp; xx &amp;gt;=0 &amp;amp;&amp;amp; xx &amp;lt; 5) return findWord(yy,xx,new String(word).substring(1).toCharArray());
+                        return false;
+                    });
+            if(res) cache[y][x][word.length-1]= 1;
+            else cache[y][x][word.length-1] = -1;
+            return res;
+        }
+
+        return false;
+    }
 }&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[Spring Chap. 5]]></title><description><![CDATA[서비스 추상화 조건 유저에 등급을 추가하고, 등급 업 조건을 설정 등급은 금, 은, 동 등금 동->은 로그인 50회 등급 은->금 추천 3…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/spring5/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/spring5/</guid><pubDate>Thu, 26 Dec 2019 16:00:39 GMT</pubDate><content:encoded>&lt;h1&gt;서비스 추상화&lt;/h1&gt;
 &lt;h2&gt;조건&lt;/h2&gt;
 &lt;ol&gt;
@@ -246,11 +459,7 @@ foreach users
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;/ol&gt;</content:encoded></item><item><title><![CDATA[Links]]></title><description><![CDATA[links markdown markdown]]></description><link>https://gatsby-starter-blog-demo.netlify.com/links/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/links/</guid><pubDate>Thu, 26 Dec 2019 12:59:42 GMT</pubDate><content:encoded>&lt;h1&gt;links&lt;/h1&gt;
-&lt;h2&gt;markdown&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://guides.github.com/features/mastering-markdown/&quot;&gt;markdown&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Session]]></title><description><![CDATA[Session 최근 세션 관련한 이슈를 해결하면서 관련된 내용을 정리한다. 클라이언트에서 서비스를 이용하는데 간헐적으로 session is already invalidated…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/session/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/session/</guid><pubDate>Thu, 26 Dec 2019 12:59:42 GMT</pubDate><content:encoded>&lt;h1&gt;Session&lt;/h1&gt;
+&lt;/ol&gt;</content:encoded></item><item><title><![CDATA[Session]]></title><description><![CDATA[Session 최근 세션 관련한 이슈를 해결하면서 관련된 내용을 정리한다. 클라이언트에서 서비스를 이용하는데 간헐적으로 session is already invalidated…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/session/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/session/</guid><pubDate>Thu, 26 Dec 2019 12:59:42 GMT</pubDate><content:encoded>&lt;h1&gt;Session&lt;/h1&gt;
 &lt;p&gt;최근 세션 관련한 이슈를 해결하면서 관련된 내용을 정리한다.&lt;/p&gt;
 &lt;p&gt;클라이언트에서 서비스를 이용하는데 간헐적으로 session is already invalidated 라는 에러 메세지를 뱉는것이다.
 해당 로그를 찾아보니 클라이언트에서 무슨 이유인지는 모르나 동시다발적으로 한번에 4개의 동일한 요청을 날리는 것을 볼 수 있었다.&lt;/p&gt;
@@ -263,8 +472,21 @@ SecurityContextRepository: Security를 저장하는 역할을 담당한다. sess
 &lt;li&gt;sessionCreationPolicy 가 stateless일 경우 - NullSecurityContextRepository&lt;/li&gt;
 &lt;li&gt;그외 HttpSessionSecurityContextRepository를 사용&lt;/li&gt;
 &lt;/ol&gt;
+&lt;h2&gt;추상적 흐름(Security context)&lt;/h2&gt;
+&lt;p&gt;SecurityContextPersistenceFilter -&gt; SecurityContext 작업 -&gt; SessionManagementFilter&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;요청에 대한 Seucrity Context를 로드한다.&lt;/li&gt;
+&lt;li&gt;인증을 통해서 Context를 작업한다.&lt;/li&gt;
+&lt;li&gt;해당 요청에 Security Context가 존재하지 않는다면 세션인증전략을 진행하고 Security를 저장한다.&lt;/li&gt;
+&lt;li&gt;3.에서 요청에 context가 존재하여 진행되지 않았다면 해당 context를 다음 요청을 위해 저장한다.&lt;/li&gt;
+&lt;/ol&gt;
 &lt;h2&gt;참조&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.baeldung.com/spring-security-session&quot;&gt;baeldung&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Spring Chap. 4]]></title><description><![CDATA[예외 예외의 핵심원칙 모든 예외는 적절하게 복구되던지, 작업을 중단하고 운영자 혹은 개발자에게 통보되야 한다. 예외 종류 체크예외: RuntimeException을 상속받지 않는 Exception 언체크예외: RuntimeException…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/spring4/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/spring4/</guid><pubDate>Fri, 20 Dec 2019 18:19:01 GMT</pubDate><content:encoded>&lt;h2&gt;예외&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.baeldung.com/spring-security-session&quot;&gt;baeldung&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Links]]></title><description><![CDATA[links markdown markdown markdown2]]></description><link>https://gatsby-starter-blog-demo.netlify.com/links/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/links/</guid><pubDate>Thu, 26 Dec 2019 12:59:42 GMT</pubDate><content:encoded>&lt;h1&gt;links&lt;/h1&gt;
+&lt;h2&gt;markdown&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://guides.github.com/features/mastering-markdown/&quot;&gt;markdown&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://wikidocs.net/1678&quot;&gt;markdown2&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Spring Chap. 4]]></title><description><![CDATA[예외 예외의 핵심원칙 모든 예외는 적절하게 복구되던지, 작업을 중단하고 운영자 혹은 개발자에게 통보되야 한다. 예외 종류 체크예외: RuntimeException을 상속받지 않는 Exception 언체크예외: RuntimeException…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/spring4/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/spring4/</guid><pubDate>Fri, 20 Dec 2019 18:19:01 GMT</pubDate><content:encoded>&lt;h2&gt;예외&lt;/h2&gt;
 &lt;h3&gt;예외의 핵심원칙&lt;/h3&gt;
 &lt;p&gt;모든 예외는 적절하게 복구되던지, 작업을 중단하고 운영자 혹은 개발자에게 통보되야 한다.&lt;/p&gt;
 &lt;h3&gt;예외 종류&lt;/h3&gt;

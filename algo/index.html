@@ -73,6 +73,94 @@ public class Main {
         }
         return false;
     }
+}</code></pre></div>
+<h2>해결</h2>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">package algospot.boggle;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
+public class Main {
+    static char[][] arr;
+    static int[][] directions = {
+            {-1,-1},
+            {-1,0},
+            {-1,1},
+            {0,-1},
+            {0,1},
+            {1,-1},
+            {1,0},
+            {1,1}
+    };
+    static int[][][] cache ;
+    public static void main(String[] args) throws IOException {
+
+//        BufferedReader br = new BufferedReader((new InputStreamReader(new FileInputStream(&quot;algospot/boggle/test.txt&quot;))));
+        BufferedReader br = new BufferedReader((new InputStreamReader(System.in)));
+        int tc = Integer.valueOf(br.readLine());
+        for( int i = 0 ; i &lt; tc ; i++) {
+            arr = new char[5][5];
+            arr[0] = br.readLine().toCharArray();
+            arr[1] = br.readLine().toCharArray();
+            arr[2] = br.readLine().toCharArray();
+            arr[3] = br.readLine().toCharArray();
+            arr[4] = br.readLine().toCharArray();
+
+
+            int wordNum = Integer.valueOf(br.readLine());
+
+            for( int j = 0 ; j &lt; wordNum ; j++) {
+                cache = new int[5][5][10];
+                String word = br.readLine();
+                if( findWord(word)) {
+                    System.out.println(String.format(&quot;%s %s&quot;,word,&quot;YES&quot;));
+                } else {
+                    System.out.println(String.format(&quot;%s %s&quot;,word,&quot;NO&quot;));
+                }
+            }
+        }
+
+    }
+
+    public static boolean findWord(String word) {
+        return IntStream
+                .range(0,25)
+                .anyMatch(i-&gt;{
+                    int y = i / 5;
+                    int x = i % 5;
+                    return findWord(y,x,word.toCharArray());
+                });
+    }
+
+    public static boolean findWord(int y, int x , char[] word) {
+        if( cache[y][x][word.length-1] == 1) {
+            return true;
+        } else if( cache[y][x][word.length-1] == -1) {
+            return false;
+        }
+        if(word.length == 1 ) {
+            return word[0] == arr[y][x];
+        }
+
+        if( word[0] == arr[y][x]) {
+            boolean res = Stream.of(directions)
+                    .anyMatch(i-&gt;{
+                        int yy = y + i[0];
+                        int xx = x + i[1];
+                        if( yy &gt;= 0 &amp;&amp; yy &lt; 5 &amp;&amp; xx &gt;=0 &amp;&amp; xx &lt; 5) return findWord(yy,xx,new String(word).substring(1).toCharArray());
+                        return false;
+                    });
+            if(res) cache[y][x][word.length-1]= 1;
+            else cache[y][x][word.length-1] = -1;
+            return res;
+        }
+
+        return false;
+    }
 }</code></pre></div></section><hr style="margin-bottom:1.75rem"/><footer><div style="display:flex;margin-bottom:4.375rem"><div class=" gatsby-image-wrapper" style="position:relative;overflow:hidden;display:inline-block;width:50px;height:50px;margin-right:0.875rem;margin-bottom:0;min-width:50px;border-radius:100%"><img src="data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAUABQDASIAAhEBAxEB/8QAGQABAQADAQAAAAAAAAAAAAAAAAUBAgME/8QAFwEBAAMAAAAAAAAAAAAAAAAAAgABA//aAAwDAQACEAMQAAABtTuWpVlGVPBk0HAFf//EABsQAAICAwEAAAAAAAAAAAAAAAECAxMAESMk/9oACAEBAAEFAnOlgZ7cvIZnEYuxj6ZjxjOh/8QAGBEAAgMAAAAAAAAAAAAAAAAAAAEQEiH/2gAIAQMBAT8BwqOP/8QAGREAAQUAAAAAAAAAAAAAAAAAAAEQEiEx/9oACAECAQE/AbJCY3//xAAgEAABAgUFAAAAAAAAAAAAAAABABECAxASITFBYYGR/9oACAEBAAY/Ai2qYx3A0tPifYlsLBBT8qX3T//EABoQAQADAQEBAAAAAAAAAAAAAAEAESExQVH/2gAIAQEAAT8hRVcZF9KXnJkRaRWsbCd3oQNMD6x1eoRshVw76T//2gAMAwEAAgADAAAAENvoAP/EABkRAAIDAQAAAAAAAAAAAAAAAAABESExUf/aAAgBAwEBPxCEpsj00xYf/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAEQESExUf/aAAgBAgEBPxBNs0X5A9n/xAAeEAEBAQACAQUAAAAAAAAAAAABEQAhMUFRYXGBkf/aAAgBAQABPxClwdnV0whQo4lO/wAzyyrjkGw+cZbkILxecbfXBH7zSeBntAmta2n5uEBbXZ4N/9k=" alt="Kyle Mathews" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms;border-radius:50%"/><noscript><picture><source srcset="/static/4f27694bd7811d13157e5e488ad64f43/30d3a/profile-pic.jpg 1x,
 /static/4f27694bd7811d13157e5e488ad64f43/66c95/profile-pic.jpg 1.5x,
 /static/4f27694bd7811d13157e5e488ad64f43/aacbd/profile-pic.jpg 2x" /><img loading="lazy" width="50" height="50" srcset="/static/4f27694bd7811d13157e5e488ad64f43/30d3a/profile-pic.jpg 1x,
