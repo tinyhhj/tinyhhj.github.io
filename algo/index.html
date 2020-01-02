@@ -6,163 +6,32 @@
 <li>1만 따로 빼냄: 2~n 조각은 애초에 1~n까지의 합을 구한다는 원래의 문제와 다른 형태이므로 재귀로 사용 x
 <strong>기저사례</strong>: 더이상 쪼개지지 않는 최소한의 작업 (존재하는 모든 입력이 항상 <strong>기저사례</strong>의 답을 이용할 수 있어야한다.)</li>
 </ol>
-<p><a href="https://algospot.com/judge/problem/read/BOGGLE">BOGGLE</a></p>
-<h2>전</h2>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">import java.io.*;
-import java.util.stream.IntStream;
-
-public class Main {
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(&quot;test.txt&quot;)));
-        String testcase = br.readLine();
-
-        for( int i =0 ; i &lt; Integer.valueOf(testcase) ; i++) {
-            char[][] arr = new char[5][5];
-            for( int j =0 ; j &lt; 5 ; j++) {
-                arr[j] = br.readLine().toCharArray();
-            }
-            int num = Integer.valueOf(br.readLine());
-            for( int k = 0 ; k &lt; num; k++) {
-                char[] word = br.readLine().toCharArray();
-                boolean find = false;
-                int y = -1, x = 0;
-                for(int z = 0 ; z &lt; 25; z++) {
-                    if( z % 5 == 0) {
-                        y++;
-                        x=0;
-                    } else {
-                        x++;
-                    }
-                    if( findWord(arr, y,x,word)) {
-                        System.out.println(new String(word)+ &quot; &quot; + &quot;YES&quot;);
-                        find = true;
-                        break;
-                    }
-                }
-                if( !find) {
-                    System.out.println(new String(word)+ &quot; &quot; + &quot;NO&quot;);
-                }
-
-            }
-        }
-
-    }
-
-    private static boolean findWord(char[][] arr, int y, int x , char[] word) {
-        if( word.length == 1) {
-            if( arr[y][x] == word[0]) return true;
-            else return false;
-        }
-        if( arr[y][x] == word[0]) {
-            int yy = y-2, xx = x-1;
-            for( int kk =0 ; kk &lt; 9 ; kk++) {
-                if( kk % 3 == 0) {
-                    yy++;
-                    xx = x-1;
-                } else {
-                    xx++;
-                }
-                if( kk == 4) continue;
-                if( yy &gt;=0 &amp;&amp; yy&lt;5&amp;&amp;xx &gt;=0 &amp;&amp; xx&lt;5) {
-                    if( findWord(arr,yy,xx,new String(word).substring(1).toCharArray())) {
-                        return true;
-                    }
-                }
-            }
-
-        }
-        return false;
-    }
-}</code></pre></div>
-<h2>해결</h2>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">package algospot.boggle;
-
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
-
-public class Main {
-    static char[][] arr;
-    static int[][] directions = {
-            {-1,-1},
-            {-1,0},
-            {-1,1},
-            {0,-1},
-            {0,1},
-            {1,-1},
-            {1,0},
-            {1,1}
-    };
-    static int[][][] cache ;
-    public static void main(String[] args) throws IOException {
-
-//        BufferedReader br = new BufferedReader((new InputStreamReader(new FileInputStream(&quot;algospot/boggle/test.txt&quot;))));
-        BufferedReader br = new BufferedReader((new InputStreamReader(System.in)));
-        int tc = Integer.valueOf(br.readLine());
-        for( int i = 0 ; i &lt; tc ; i++) {
-            arr = new char[5][5];
-            arr[0] = br.readLine().toCharArray();
-            arr[1] = br.readLine().toCharArray();
-            arr[2] = br.readLine().toCharArray();
-            arr[3] = br.readLine().toCharArray();
-            arr[4] = br.readLine().toCharArray();
-
-
-            int wordNum = Integer.valueOf(br.readLine());
-
-            for( int j = 0 ; j &lt; wordNum ; j++) {
-                cache = new int[5][5][10];
-                String word = br.readLine();
-                if( findWord(word)) {
-                    System.out.println(String.format(&quot;%s %s&quot;,word,&quot;YES&quot;));
-                } else {
-                    System.out.println(String.format(&quot;%s %s&quot;,word,&quot;NO&quot;));
-                }
-            }
-        }
-
-    }
-
-    public static boolean findWord(String word) {
-        return IntStream
-                .range(0,25)
-                .anyMatch(i-&gt;{
-                    int y = i / 5;
-                    int x = i % 5;
-                    return findWord(y,x,word.toCharArray());
-                });
-    }
-
-    public static boolean findWord(int y, int x , char[] word) {
-        if( cache[y][x][word.length-1] == 1) {
-            return true;
-        } else if( cache[y][x][word.length-1] == -1) {
-            return false;
-        }
-        if(word.length == 1 ) {
-            return word[0] == arr[y][x];
-        }
-
-        if( word[0] == arr[y][x]) {
-            boolean res = Stream.of(directions)
-                    .anyMatch(i-&gt;{
-                        int yy = y + i[0];
-                        int xx = x + i[1];
-                        if( yy &gt;= 0 &amp;&amp; yy &lt; 5 &amp;&amp; xx &gt;=0 &amp;&amp; xx &lt; 5) return findWord(yy,xx,new String(word).substring(1).toCharArray());
-                        return false;
-                    });
-            if(res) cache[y][x][word.length-1]= 1;
-            else cache[y][x][word.length-1] = -1;
-            return res;
-        }
-
-        return false;
-    }
-}</code></pre></div></section><hr style="margin-bottom:1.75rem"/><footer><div style="display:flex;margin-bottom:4.375rem"><div class=" gatsby-image-wrapper" style="position:relative;overflow:hidden;display:inline-block;width:50px;height:50px;margin-right:0.875rem;margin-bottom:0;min-width:50px;border-radius:100%"><img src="data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAUABQDASIAAhEBAxEB/8QAGQABAQADAQAAAAAAAAAAAAAAAAUBAgME/8QAFwEBAAMAAAAAAAAAAAAAAAAAAgABA//aAAwDAQACEAMQAAABtTuWpVlGVPBk0HAFf//EABsQAAICAwEAAAAAAAAAAAAAAAECAxMAESMk/9oACAEBAAEFAnOlgZ7cvIZnEYuxj6ZjxjOh/8QAGBEAAgMAAAAAAAAAAAAAAAAAAAEQEiH/2gAIAQMBAT8BwqOP/8QAGREAAQUAAAAAAAAAAAAAAAAAAAEQEiEx/9oACAECAQE/AbJCY3//xAAgEAABAgUFAAAAAAAAAAAAAAABABECAxASITFBYYGR/9oACAEBAAY/Ai2qYx3A0tPifYlsLBBT8qX3T//EABoQAQADAQEBAAAAAAAAAAAAAAEAESExQVH/2gAIAQEAAT8hRVcZF9KXnJkRaRWsbCd3oQNMD6x1eoRshVw76T//2gAMAwEAAgADAAAAENvoAP/EABkRAAIDAQAAAAAAAAAAAAAAAAABESExUf/aAAgBAwEBPxCEpsj00xYf/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAEQESExUf/aAAgBAgEBPxBNs0X5A9n/xAAeEAEBAQACAQUAAAAAAAAAAAABEQAhMUFRYXGBkf/aAAgBAQABPxClwdnV0whQo4lO/wAzyyrjkGw+cZbkILxecbfXBH7zSeBntAmta2n5uEBbXZ4N/9k=" alt="Kyle Mathews" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms;border-radius:50%"/><noscript><picture><source srcset="/static/4f27694bd7811d13157e5e488ad64f43/30d3a/profile-pic.jpg 1x,
+<h3>접근방법</h3>
+<ol>
+<li>최대 입력의 크기를 가늠하여 시간안에 도출할 수 있는지 예상</li>
+<li>가능한 모든 답의 후보를 만드는 과정을 여러 개의 선택으로 나눈 뒤, 각 선택은 답의 후보를 만드는 과정의 한조각이 된다.</li>
+<li>한 조각을 택해 답의 일부를 만들고, 나머지는 답을 재귀호출을 통해 완성</li>
+<li>조각이 하나 이하로 남은 경우에 답을 생성했으므로, 이것을 기저사례로 선택해 처리</li>
+</ol>
+<h3>이론적 배경</h3>
+<ul>
+<li>
+<p>문제와 부분문제의 정의</p>
+<blockquote>
+<p>문제: 주어진 자연수 정렬</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>문제: {4,2,50,2} 정렬</p>
+</blockquote>
+<blockquote>
+<p>둘은 다른문제임. 전자는 입력을 정의하지 않은 반면, 후자는 특정한 입력을 지정하였기 때문</p>
+</blockquote>
+<blockquote>
+<p>문제란 수행해야 할 작업과 그 작업을 적용할 자료의 조합을 뜻한다.</p>
+</blockquote></section><hr style="margin-bottom:1.75rem"/><footer><div style="display:flex;margin-bottom:4.375rem"><div class=" gatsby-image-wrapper" style="position:relative;overflow:hidden;display:inline-block;width:50px;height:50px;margin-right:0.875rem;margin-bottom:0;min-width:50px;border-radius:100%"><img src="data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAUABQDASIAAhEBAxEB/8QAGQABAQADAQAAAAAAAAAAAAAAAAUBAgME/8QAFwEBAAMAAAAAAAAAAAAAAAAAAgABA//aAAwDAQACEAMQAAABtTuWpVlGVPBk0HAFf//EABsQAAICAwEAAAAAAAAAAAAAAAECAxMAESMk/9oACAEBAAEFAnOlgZ7cvIZnEYuxj6ZjxjOh/8QAGBEAAgMAAAAAAAAAAAAAAAAAAAEQEiH/2gAIAQMBAT8BwqOP/8QAGREAAQUAAAAAAAAAAAAAAAAAAAEQEiEx/9oACAECAQE/AbJCY3//xAAgEAABAgUFAAAAAAAAAAAAAAABABECAxASITFBYYGR/9oACAEBAAY/Ai2qYx3A0tPifYlsLBBT8qX3T//EABoQAQADAQEBAAAAAAAAAAAAAAEAESExQVH/2gAIAQEAAT8hRVcZF9KXnJkRaRWsbCd3oQNMD6x1eoRshVw76T//2gAMAwEAAgADAAAAENvoAP/EABkRAAIDAQAAAAAAAAAAAAAAAAABESExUf/aAAgBAwEBPxCEpsj00xYf/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAEQESExUf/aAAgBAgEBPxBNs0X5A9n/xAAeEAEBAQACAQUAAAAAAAAAAAABEQAhMUFRYXGBkf/aAAgBAQABPxClwdnV0whQo4lO/wAzyyrjkGw+cZbkILxecbfXBH7zSeBntAmta2n5uEBbXZ4N/9k=" alt="Kyle Mathews" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms;border-radius:50%"/><noscript><picture><source srcset="/static/4f27694bd7811d13157e5e488ad64f43/30d3a/profile-pic.jpg 1x,
 /static/4f27694bd7811d13157e5e488ad64f43/66c95/profile-pic.jpg 1.5x,
 /static/4f27694bd7811d13157e5e488ad64f43/aacbd/profile-pic.jpg 2x" /><img loading="lazy" width="50" height="50" srcset="/static/4f27694bd7811d13157e5e488ad64f43/30d3a/profile-pic.jpg 1x,
 /static/4f27694bd7811d13157e5e488ad64f43/66c95/profile-pic.jpg 1.5x,
-/static/4f27694bd7811d13157e5e488ad64f43/aacbd/profile-pic.jpg 2x" src="/static/4f27694bd7811d13157e5e488ad64f43/30d3a/profile-pic.jpg" alt="Kyle Mathews" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div><p>Written by <strong>Kyle Mathews</strong> who lives and works in San Francisco building useful things.<!-- --> <a href="https://twitter.com/kylemathews">You should follow him on Twitter</a></p></div></footer></article><nav><ul style="display:flex;flex-wrap:wrap;justify-content:space-between;list-style:none;padding:0"><li><a rel="prev" href="/spring5/">← <!-- -->Spring Chap. 5</a></li><li><a rel="next" href="/spring1/">Spring Chap. 1<!-- --> →</a></li></ul></nav></main><footer>© <!-- -->2019<!-- -->, Built with<!-- --> <a href="https://www.gatsbyjs.org">Gatsby</a></footer></div></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/algo/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"app":["/app-bdd174559b2563d3d6ca.js"],"component---node-modules-gatsby-plugin-offline-app-shell-js":["/component---node-modules-gatsby-plugin-offline-app-shell-js-25248a3ece515bddc791.js"],"component---src-templates-blog-post-js":["/component---src-templates-blog-post-js-a6d09b3317a3b5b22ffd.js"],"component---src-pages-404-js":["/component---src-pages-404-js-31a64aa4d0648eac1c8c.js"],"component---src-pages-index-js":["/component---src-pages-index-js-366620aacd90157c8779.js"]};/*]]>*/</script><script src="/webpack-runtime-e27f9eaf63fd8b36edb7.js" async=""></script><script src="/styles-7abe7a3cd8529a6be7e9.js" async=""></script><script src="/app-bdd174559b2563d3d6ca.js" async=""></script><script src="/commons-0532713192ac00f98a52.js" async=""></script><script src="/component---src-templates-blog-post-js-a6d09b3317a3b5b22ffd.js" async=""></script></body></html>
+/static/4f27694bd7811d13157e5e488ad64f43/aacbd/profile-pic.jpg 2x" src="/static/4f27694bd7811d13157e5e488ad64f43/30d3a/profile-pic.jpg" alt="Kyle Mathews" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div><p>Written by <strong>Kyle Mathews</strong> who lives and works in San Francisco building useful things.<!-- --> <a href="https://twitter.com/kylemathews">You should follow him on Twitter</a></p></div></footer></article><nav><ul style="display:flex;flex-wrap:wrap;justify-content:space-between;list-style:none;padding:0"><li><a rel="prev" href="/spring5/">← <!-- -->Spring Chap. 5</a></li><li><a rel="next" href="/spring1/">Spring Chap. 1<!-- --> →</a></li></ul></nav></main><footer>© <!-- -->2020<!-- -->, Built with<!-- --> <a href="https://www.gatsbyjs.org">Gatsby</a></footer></div></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/algo/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"app":["/app-bdd174559b2563d3d6ca.js"],"component---node-modules-gatsby-plugin-offline-app-shell-js":["/component---node-modules-gatsby-plugin-offline-app-shell-js-25248a3ece515bddc791.js"],"component---src-templates-blog-post-js":["/component---src-templates-blog-post-js-a6d09b3317a3b5b22ffd.js"],"component---src-pages-404-js":["/component---src-pages-404-js-31a64aa4d0648eac1c8c.js"],"component---src-pages-index-js":["/component---src-pages-index-js-366620aacd90157c8779.js"]};/*]]>*/</script><script src="/webpack-runtime-e27f9eaf63fd8b36edb7.js" async=""></script><script src="/styles-7abe7a3cd8529a6be7e9.js" async=""></script><script src="/app-bdd174559b2563d3d6ca.js" async=""></script><script src="/commons-0532713192ac00f98a52.js" async=""></script><script src="/component---src-templates-blog-post-js-a6d09b3317a3b5b22ffd.js" async=""></script></body></html>

@@ -1,4 +1,64 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Gatsby Starter Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 31 Dec 2019 07:33:36 GMT</lastBuildDate><item><title><![CDATA[[algospot]boggle]]></title><description><![CDATA[BOGGLE 재귀호출]]></description><link>https://gatsby-starter-blog-demo.netlify.com/algospot-boggle/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/algospot-boggle/</guid><pubDate>Tue, 31 Dec 2019 17:31:38 GMT</pubDate><content:encoded>&lt;h1&gt;&lt;a href=&quot;https://algospot.com/judge/problem/read/BOGGLE&quot;&gt;BOGGLE&lt;/a&gt;&lt;/h1&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Gatsby Starter Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 02 Jan 2020 18:33:16 GMT</lastBuildDate><item><title><![CDATA[[algospot]picnic]]></title><description><![CDATA[PICNIC 재귀호출]]></description><link>https://gatsby-starter-blog-demo.netlify.com/algospot-picnic/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/algospot-picnic/</guid><pubDate>Fri, 03 Jan 2020 17:31:38 GMT</pubDate><content:encoded>&lt;h1&gt;&lt;a href=&quot;https://algospot.com/judge/problem/read/PICNIC&quot;&gt;PICNIC&lt;/a&gt;&lt;/h1&gt;
+&lt;h2&gt;재귀호출&lt;/h2&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;package algospot.picnic;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.*;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
+public class Main {
+
+    public static void main(String[] args) throws FileNotFoundException {
+
+//        Scanner sc = new Scanner(new FileInputStream(&amp;quot;algospot/picnic/test.txt&amp;quot;));
+        Scanner sc=  new Scanner(System.in);
+        int tc = sc.nextInt();
+        for( int i = 0; i &amp;lt; tc ; i++ ) {
+            int total = sc.nextInt();
+            int friend = sc.nextInt();
+            int[][] friends = new int[10][10];
+            for(int j = 0 ; j &amp;lt; friend ; j++) {
+                int a = sc.nextInt();
+                int b = sc.nextInt();
+                friends[a][b] = 1;
+                friends[b][a] = 1;
+            }
+            System.out.println(getFriendNumber(new int[total], friends, total));
+
+        }
+    }
+
+    // 친구 목록이 주어졌을 때의 친구들끼리 짝을 맺을 수 있는 경우의 수
+    static int getFriendNumber(int[] children, int[][] friends, int remain) {
+        // 짝이 다 맞으면 경우의 수 1 추가
+        if( remain == 0 ) {
+            return 1;
+        }
+        final int[] res = {0};
+        // 가장 첫번째부터 짝을 맺어준다
+        int first=IntStream.range(0,children.length)
+                .filter(i-&amp;gt;children[i] == 0)
+                .findFirst().getAsInt();
+        IntStream.range(first,children.length)
+                .filter(j-&amp;gt;friends[first][j] == 1 &amp;amp;&amp;amp; children[j] == 0)
+                .forEach(j-&amp;gt;{
+                    children[first]=1;
+                    children[j]=1;
+
+                    res[0] +=getFriendNumber(children,friends,remain-2);
+                    children[first]=0;
+                    children[j]=0;
+
+
+                });
+
+        return res[0];
+    }
+
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[[algospot]boggle]]></title><description><![CDATA[BOGGLE 재귀호출]]></description><link>https://gatsby-starter-blog-demo.netlify.com/algospot-boggle/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/algospot-boggle/</guid><pubDate>Tue, 31 Dec 2019 17:31:38 GMT</pubDate><content:encoded>&lt;h1&gt;&lt;a href=&quot;https://algospot.com/judge/problem/read/BOGGLE&quot;&gt;BOGGLE&lt;/a&gt;&lt;/h1&gt;
 &lt;h2&gt;재귀호출&lt;/h2&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;package algospot.boggle;
 
@@ -257,162 +317,31 @@ a가 b를 의존한다는 것은 b가 변경되었을 때, a도 영향을 받을
 &lt;li&gt;1만 따로 빼냄: 2~n 조각은 애초에 1~n까지의 합을 구한다는 원래의 문제와 다른 형태이므로 재귀로 사용 x
 &lt;strong&gt;기저사례&lt;/strong&gt;: 더이상 쪼개지지 않는 최소한의 작업 (존재하는 모든 입력이 항상 &lt;strong&gt;기저사례&lt;/strong&gt;의 답을 이용할 수 있어야한다.)&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;a href=&quot;https://algospot.com/judge/problem/read/BOGGLE&quot;&gt;BOGGLE&lt;/a&gt;&lt;/p&gt;
-&lt;h2&gt;전&lt;/h2&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;import java.io.*;
-import java.util.stream.IntStream;
-
-public class Main {
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(&amp;quot;test.txt&amp;quot;)));
-        String testcase = br.readLine();
-
-        for( int i =0 ; i &amp;lt; Integer.valueOf(testcase) ; i++) {
-            char[][] arr = new char[5][5];
-            for( int j =0 ; j &amp;lt; 5 ; j++) {
-                arr[j] = br.readLine().toCharArray();
-            }
-            int num = Integer.valueOf(br.readLine());
-            for( int k = 0 ; k &amp;lt; num; k++) {
-                char[] word = br.readLine().toCharArray();
-                boolean find = false;
-                int y = -1, x = 0;
-                for(int z = 0 ; z &amp;lt; 25; z++) {
-                    if( z % 5 == 0) {
-                        y++;
-                        x=0;
-                    } else {
-                        x++;
-                    }
-                    if( findWord(arr, y,x,word)) {
-                        System.out.println(new String(word)+ &amp;quot; &amp;quot; + &amp;quot;YES&amp;quot;);
-                        find = true;
-                        break;
-                    }
-                }
-                if( !find) {
-                    System.out.println(new String(word)+ &amp;quot; &amp;quot; + &amp;quot;NO&amp;quot;);
-                }
-
-            }
-        }
-
-    }
-
-    private static boolean findWord(char[][] arr, int y, int x , char[] word) {
-        if( word.length == 1) {
-            if( arr[y][x] == word[0]) return true;
-            else return false;
-        }
-        if( arr[y][x] == word[0]) {
-            int yy = y-2, xx = x-1;
-            for( int kk =0 ; kk &amp;lt; 9 ; kk++) {
-                if( kk % 3 == 0) {
-                    yy++;
-                    xx = x-1;
-                } else {
-                    xx++;
-                }
-                if( kk == 4) continue;
-                if( yy &amp;gt;=0 &amp;amp;&amp;amp; yy&amp;lt;5&amp;amp;&amp;amp;xx &amp;gt;=0 &amp;amp;&amp;amp; xx&amp;lt;5) {
-                    if( findWord(arr,yy,xx,new String(word).substring(1).toCharArray())) {
-                        return true;
-                    }
-                }
-            }
-
-        }
-        return false;
-    }
-}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;해결&lt;/h2&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;package algospot.boggle;
-
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
-
-public class Main {
-    static char[][] arr;
-    static int[][] directions = {
-            {-1,-1},
-            {-1,0},
-            {-1,1},
-            {0,-1},
-            {0,1},
-            {1,-1},
-            {1,0},
-            {1,1}
-    };
-    static int[][][] cache ;
-    public static void main(String[] args) throws IOException {
-
-//        BufferedReader br = new BufferedReader((new InputStreamReader(new FileInputStream(&amp;quot;algospot/boggle/test.txt&amp;quot;))));
-        BufferedReader br = new BufferedReader((new InputStreamReader(System.in)));
-        int tc = Integer.valueOf(br.readLine());
-        for( int i = 0 ; i &amp;lt; tc ; i++) {
-            arr = new char[5][5];
-            arr[0] = br.readLine().toCharArray();
-            arr[1] = br.readLine().toCharArray();
-            arr[2] = br.readLine().toCharArray();
-            arr[3] = br.readLine().toCharArray();
-            arr[4] = br.readLine().toCharArray();
-
-
-            int wordNum = Integer.valueOf(br.readLine());
-
-            for( int j = 0 ; j &amp;lt; wordNum ; j++) {
-                cache = new int[5][5][10];
-                String word = br.readLine();
-                if( findWord(word)) {
-                    System.out.println(String.format(&amp;quot;%s %s&amp;quot;,word,&amp;quot;YES&amp;quot;));
-                } else {
-                    System.out.println(String.format(&amp;quot;%s %s&amp;quot;,word,&amp;quot;NO&amp;quot;));
-                }
-            }
-        }
-
-    }
-
-    public static boolean findWord(String word) {
-        return IntStream
-                .range(0,25)
-                .anyMatch(i-&amp;gt;{
-                    int y = i / 5;
-                    int x = i % 5;
-                    return findWord(y,x,word.toCharArray());
-                });
-    }
-
-    public static boolean findWord(int y, int x , char[] word) {
-        if( cache[y][x][word.length-1] == 1) {
-            return true;
-        } else if( cache[y][x][word.length-1] == -1) {
-            return false;
-        }
-        if(word.length == 1 ) {
-            return word[0] == arr[y][x];
-        }
-
-        if( word[0] == arr[y][x]) {
-            boolean res = Stream.of(directions)
-                    .anyMatch(i-&amp;gt;{
-                        int yy = y + i[0];
-                        int xx = x + i[1];
-                        if( yy &amp;gt;= 0 &amp;amp;&amp;amp; yy &amp;lt; 5 &amp;amp;&amp;amp; xx &amp;gt;=0 &amp;amp;&amp;amp; xx &amp;lt; 5) return findWord(yy,xx,new String(word).substring(1).toCharArray());
-                        return false;
-                    });
-            if(res) cache[y][x][word.length-1]= 1;
-            else cache[y][x][word.length-1] = -1;
-            return res;
-        }
-
-        return false;
-    }
-}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[Spring Chap. 5]]></title><description><![CDATA[서비스 추상화 조건 유저에 등급을 추가하고, 등급 업 조건을 설정 등급은 금, 은, 동 등금 동->은 로그인 50회 등급 은->금 추천 3…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/spring5/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/spring5/</guid><pubDate>Thu, 26 Dec 2019 16:00:39 GMT</pubDate><content:encoded>&lt;h1&gt;서비스 추상화&lt;/h1&gt;
+&lt;h3&gt;접근방법&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;최대 입력의 크기를 가늠하여 시간안에 도출할 수 있는지 예상&lt;/li&gt;
+&lt;li&gt;가능한 모든 답의 후보를 만드는 과정을 여러 개의 선택으로 나눈 뒤, 각 선택은 답의 후보를 만드는 과정의 한조각이 된다.&lt;/li&gt;
+&lt;li&gt;한 조각을 택해 답의 일부를 만들고, 나머지는 답을 재귀호출을 통해 완성&lt;/li&gt;
+&lt;li&gt;조각이 하나 이하로 남은 경우에 답을 생성했으므로, 이것을 기저사례로 선택해 처리&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;이론적 배경&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;문제와 부분문제의 정의&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;문제: 주어진 자연수 정렬&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;문제: {4,2,50,2} 정렬&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;둘은 다른문제임. 전자는 입력을 정의하지 않은 반면, 후자는 특정한 입력을 지정하였기 때문&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;문제란 수행해야 할 작업과 그 작업을 적용할 자료의 조합을 뜻한다.&lt;/p&gt;
+&lt;/blockquote&gt;</content:encoded></item><item><title><![CDATA[Spring Chap. 5]]></title><description><![CDATA[서비스 추상화 조건 유저에 등급을 추가하고, 등급 업 조건을 설정 등급은 금, 은, 동 등금 동->은 로그인 50회 등급 은->금 추천 3…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/spring5/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/spring5/</guid><pubDate>Thu, 26 Dec 2019 16:00:39 GMT</pubDate><content:encoded>&lt;h1&gt;서비스 추상화&lt;/h1&gt;
 &lt;h2&gt;조건&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;
@@ -457,6 +386,68 @@ foreach users
     canlevelup? upgrade : nothing
 }&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;canlevelup? &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;function canlevelup(user) {
+level = userlevel
+level is basic login &amp;gt;= 50
+level is silver recommend &amp;gt;= 30
+other false
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;upgrade&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;function upgrad(user) {
+level = userlevel
+user.level = level.nextLevel
+update user
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;기능의 분리&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;레벨을 업그레이드하는 정책을 유연하게 변경할 수 있도록 개선(전략패턴)&lt;/li&gt;
+&lt;li&gt;userService에서 레벨 업그레이드 정책을 분리한다. (interface를 통해 분리 후 di로 주입)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;객체지향적 코드&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;다른 오브젝트의 데이터를 가져와서 작업하는 대신, 데이터를 갖고있는 오브젝트에게 작업을 해달라고 요청한다.&lt;/strong&gt;
+기존: userService가 user의 레벨을 가져와 조건을 판단하여 level수정
+변경: userService가 user에게 레벨 수정요청, user가 level에게 다음level 요청&lt;/p&gt;
+&lt;ol start=&quot;6&quot;&gt;
+&lt;li&gt;
+&lt;p&gt;트랜잭션
+jdbc의 트랜잭션은 하나의 connection을 사용하다가 닫는 사이에 일어난다. jdbc의 기본 설정은 db작업을 수행한 직후에 자동으로 커밋이 되도록 되어있으므로(따라서 작업마다 커밋해서 트랜잭션을 끝내버린다), 이 설정을 끔으로써 시작을 설정하고 commit이나 rollback으로 끝을 설정한다.(트랜잭션 경계설정)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;중요한 점은 트랜잭션은 하나의 connection으로부터 사용하는것이므로 트랜잭션의 경계는 하나의 connection이 만들어지고 닫히는 범위 내에 존재해야한다.&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;.&quot;&gt;&lt;pre class=&quot;language-.&quot;&gt;&lt;code class=&quot;language-.&quot;&gt;connection = datasource.getConnection() // connection 생성 
+connection.setAutoCommit(false) // 트랜잭션 시작 설정
+connection.commit() or rollback() // 트랜잭션 끝 설정
+connection.close()                // connection close &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;하지만 서비스에서 트랜잭션 경계를 위의 방법으로 설정하기 위해서는 다음과 같은 문제점이 따른다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;jdbc api를 사용해 순수 비지니스로직만을 담아내지 못하고&lt;/li&gt;
+&lt;li&gt;dao메소드와 service메소드에 connection 파라미터가 추가된다.(경계설정한 connection을 공유하기 위해서)&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;dao interface에 connection 파라미터가 들어간다는것은 데이터 액세스 기술에 종속적이라는 의미이다(jpa나 하이버네이트 구현방식 변경하려면 interface부터 모두 변경해야한다.)&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;트랜잭션의 종류&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;로컬 트랜잭션: jdbc의 connection을 이용한 트랜잭션 방식 (하나의 connection에 종속적이다)&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;글로벌 트랜잭션: 여러 db에 대한 작업을 하나의 트랜잭션으로 묶을때 사용하는 방식(트랜잭션매니저 이용)&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;트랜잭션 동기화 방식을(jdbc connection을 이용한) 통해 트랜잭션 경계를 구성할 수 있지만 다음과 같은 문제점이 따른다. &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;jdbc api connection을 이용한 방식이기 때문에 글로벌 트랜잭션 적용이 불가능하다( 적용하려면 service 로직 수정)&lt;/li&gt;
+&lt;li&gt;jPA나 hibernate의 경우에 독자적인 트랜잭션 관리 api를 사용하므로 적용이 불가능하다( 적용하려면 service 로직 수정)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;즉 기술환경에 종속적인 코드가 된다&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;서비스 추상화&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;일반적으로 서비스 추상화란 트랜잭션과 같이 기능은 유사하나 사용 방법이 다른 로우레벨의 다양한 기술에 대해 인터페이스와 일관성 있는 접근 방법을 제공해주는 것이나 JavaMail 처럼 테스트를 어렵게 만드는 api를 사용할 때도 적용이 가능하다.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;</content:encoded></item><item><title><![CDATA[Session]]></title><description><![CDATA[Session 최근 세션 관련한 이슈를 해결하면서 관련된 내용을 정리한다. 클라이언트에서 서비스를 이용하는데 간헐적으로 session is already invalidated…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/session/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/session/</guid><pubDate>Thu, 26 Dec 2019 12:59:42 GMT</pubDate><content:encoded>&lt;h1&gt;Session&lt;/h1&gt;
@@ -481,11 +472,19 @@ SecurityContextRepository: Security를 저장하는 역할을 담당한다. sess
 &lt;li&gt;3.에서 요청에 context가 존재하여 진행되지 않았다면 해당 context를 다음 요청을 위해 저장한다.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h2&gt;참조&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.baeldung.com/spring-security-session&quot;&gt;baeldung&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Links]]></title><description><![CDATA[links markdown markdown markdown2]]></description><link>https://gatsby-starter-blog-demo.netlify.com/links/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/links/</guid><pubDate>Thu, 26 Dec 2019 12:59:42 GMT</pubDate><content:encoded>&lt;h1&gt;links&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.baeldung.com/spring-security-session&quot;&gt;baeldung&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Links]]></title><description><![CDATA[links markdown markdown markdown2 github action github action & typescript intellij working directory]]></description><link>https://gatsby-starter-blog-demo.netlify.com/links/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/links/</guid><pubDate>Thu, 26 Dec 2019 12:59:42 GMT</pubDate><content:encoded>&lt;h1&gt;links&lt;/h1&gt;
 &lt;h2&gt;markdown&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://guides.github.com/features/mastering-markdown/&quot;&gt;markdown&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://wikidocs.net/1678&quot;&gt;markdown2&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;github action&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://ahnheejong.name/articles/receive-new-room-notification-mails-using-github-action/&quot;&gt;github action &amp;#x26; typescript&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;intellij&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://stackoverflow.com/questions/19838334/what-is-a-working-directory-in-intellij-idea&quot;&gt;working directory&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Spring Chap. 4]]></title><description><![CDATA[예외 예외의 핵심원칙 모든 예외는 적절하게 복구되던지, 작업을 중단하고 운영자 혹은 개발자에게 통보되야 한다. 예외 종류 체크예외: RuntimeException을 상속받지 않는 Exception 언체크예외: RuntimeException…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/spring4/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/spring4/</guid><pubDate>Fri, 20 Dec 2019 18:19:01 GMT</pubDate><content:encoded>&lt;h2&gt;예외&lt;/h2&gt;
 &lt;h3&gt;예외의 핵심원칙&lt;/h3&gt;
 &lt;p&gt;모든 예외는 적절하게 복구되던지, 작업을 중단하고 운영자 혹은 개발자에게 통보되야 한다.&lt;/p&gt;
