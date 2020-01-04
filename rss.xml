@@ -1,4 +1,108 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Gatsby Starter Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 02 Jan 2020 18:37:50 GMT</lastBuildDate><item><title><![CDATA[[algospot]picnic]]></title><description><![CDATA[PICNIC 재귀호출]]></description><link>https://gatsby-starter-blog-demo.netlify.com/algospot-picnic/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/algospot-picnic/</guid><pubDate>Fri, 03 Jan 2020 17:31:38 GMT</pubDate><content:encoded>&lt;h1&gt;&lt;a href=&quot;https://algospot.com/judge/problem/read/PICNIC&quot;&gt;PICNIC&lt;/a&gt;&lt;/h1&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Gatsby Starter Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 04 Jan 2020 17:43:49 GMT</lastBuildDate><item><title><![CDATA[No title]]></title><link>https://gatsby-starter-blog-demo.netlify.com/spring6/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/spring6/</guid><content:encoded></content:encoded></item><item><title><![CDATA[[algospot]boardcover]]></title><description><![CDATA[BOARDCOVER 재귀호출]]></description><link>https://gatsby-starter-blog-demo.netlify.com/algospot-boardcover/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/algospot-boardcover/</guid><pubDate>Sat, 04 Jan 2020 17:40:56 GMT</pubDate><content:encoded>&lt;h1&gt;&lt;a href=&quot;https://algospot.com/judge/problem/read/BOARDCOVER&quot;&gt;BOARDCOVER&lt;/a&gt;&lt;/h1&gt;
+&lt;h2&gt;재귀호출&lt;/h2&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;public class Main {
+
+    private static char[][][] block = new char[][][] {
+            {{&amp;#39;#&amp;#39;,&amp;#39;#&amp;#39;},
+                    {&amp;#39;#&amp;#39;,&amp;#39;.&amp;#39;}},
+            {{&amp;#39;#&amp;#39;,&amp;#39;#&amp;#39;},
+                    {&amp;#39;.&amp;#39;,&amp;#39;#&amp;#39;}},
+            {{&amp;#39;.&amp;#39;,&amp;#39;#&amp;#39;},
+                    {&amp;#39;#&amp;#39;,&amp;#39;#&amp;#39;}},
+            {{&amp;#39;#&amp;#39;,&amp;#39;.&amp;#39;},
+                    {&amp;#39;#&amp;#39;,&amp;#39;#&amp;#39;}},
+    };
+
+    public static void main(String[] args) throws FileNotFoundException {
+        Scanner sc = new Scanner(new FileInputStream(&amp;quot;algospot/boardcover/input.txt&amp;quot;));
+        int tc = sc.nextInt();
+        IntStream.range(0,tc)
+                .forEach(i-&amp;gt; {
+                    //tc
+                    int row = sc.nextInt();
+                    int col = sc.nextInt();
+                    sc.nextLine();
+
+                    char[][] map = new char[row][];
+
+                    // map reading
+                    final int[] sum = {0};
+                    IntStream.range(0,row)
+                            .forEach(ii-&amp;gt;{
+                                map[ii] = sc.nextLine().toCharArray();
+                                sum[0] += IntStream.range(0,map[ii].length)
+                                        .mapToObj(index-&amp;gt;map[ii][index])
+                                        .filter(c-&amp;gt;c==&amp;#39;.&amp;#39;)
+                                        .count();
+                            });
+                    System.out.println(getBlockNum(map,sum[0]));
+
+                });
+    }
+
+    // input: map, 남은 칸수
+    // output: block을 놓을 수 있는 가능한 수
+    public static int getBlockNum(final char[][] map, int remain) {
+        if( remain % 3 != 0)
+            return 0;
+        if( remain == 0 )
+            return 1;
+
+        // 맨 왼쪽 위쪽부터 블록을 채워감
+        int first = IntStream.range(0,map.length * map[0].length)
+                .filter(i-&amp;gt;map[i/map[0].length][i%map[0].length] == &amp;#39;.&amp;#39;)
+                .findFirst().getAsInt();
+        int r = first / map[0].length;
+        int c = first % map[0].length;
+        int res= 0 ;
+
+        for( int i = 0; i &amp;lt; 4 ; i++) {
+            char[][] b = block[i];
+            if( isBlockFit(map, b, r, c)) {
+                addBlock(map,b,r,c);
+                res += getBlockNum(map, remain-3);
+                removeBlock(map,b,r,c);
+            }
+        }
+        return res;
+    }
+
+    private static void removeBlock(char[][] map, char[][] b, int r, int c) {
+        if(b[0][0] == &amp;#39;.&amp;#39;) c--;
+        for( int i = 0; i &amp;lt; 2 ; i++) {
+            for( int j = 0 ; j &amp;lt; 2 ; j++) {
+                if( b[i][j] == &amp;#39;#&amp;#39;) {
+                    map[r+i][c+j] = &amp;#39;.&amp;#39;;
+                }
+            }
+        }
+    }
+
+    private static void addBlock(char[][] map, char[][] b, int r, int c) {
+        if(b[0][0] == &amp;#39;.&amp;#39;) c--;
+        for( int i = 0; i &amp;lt; 2 ; i++) {
+            for( int j = 0 ; j &amp;lt; 2 ; j++) {
+                if( b[i][j] == &amp;#39;#&amp;#39;) {
+                    map[r+i][c+j] = &amp;#39;#&amp;#39;;
+                }
+            }
+        }
+    }
+
+    private static boolean isBlockFit(char[][] map, char[][] b, int r, int c) {
+        if(b[0][0] == &amp;#39;.&amp;#39;) c--;
+        if(!(r &amp;gt;= 0 &amp;amp;&amp;amp; r &amp;lt; map.length &amp;amp;&amp;amp; c &amp;gt;=0 &amp;amp;&amp;amp; c &amp;lt; map[0].length
+        &amp;amp;&amp;amp; r+1 &amp;gt;= 0 &amp;amp;&amp;amp; r+1 &amp;lt; map.length &amp;amp;&amp;amp; c+1&amp;gt;=0 &amp;amp;&amp;amp; c+1 &amp;lt; map[0].length)) return false;
+        for( int i = 0; i &amp;lt; 2 ; i++) {
+            for( int j = 0 ; j &amp;lt; 2 ; j++) {
+                if( map[r+i][c+j] == &amp;#39;#&amp;#39; &amp;amp;&amp;amp; b[i][j] == &amp;#39;#&amp;#39;) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[[algospot]picnic]]></title><description><![CDATA[PICNIC 재귀호출]]></description><link>https://gatsby-starter-blog-demo.netlify.com/algospot-picnic/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/algospot-picnic/</guid><pubDate>Fri, 03 Jan 2020 17:31:38 GMT</pubDate><content:encoded>&lt;h1&gt;&lt;a href=&quot;https://algospot.com/judge/problem/read/PICNIC&quot;&gt;PICNIC&lt;/a&gt;&lt;/h1&gt;
 &lt;h2&gt;재귀호출&lt;/h2&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;package algospot.picnic;
 
