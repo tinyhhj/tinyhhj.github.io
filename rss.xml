@@ -1,4 +1,97 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Gatsby Starter Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 04 Jan 2020 17:47:51 GMT</lastBuildDate><item><title><![CDATA[[algospot]boardcover]]></title><description><![CDATA[BOARDCOVER 재귀호출]]></description><link>https://gatsby-starter-blog-demo.netlify.com/algospot-boardcover/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/algospot-boardcover/</guid><pubDate>Sat, 04 Jan 2020 17:40:56 GMT</pubDate><content:encoded>&lt;h1&gt;&lt;a href=&quot;https://algospot.com/judge/problem/read/BOARDCOVER&quot;&gt;BOARDCOVER&lt;/a&gt;&lt;/h1&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Gatsby Starter Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 09 Jan 2020 17:53:22 GMT</lastBuildDate><item><title><![CDATA[No title]]></title><link>https://gatsby-starter-blog-demo.netlify.com/algospot-clocksync/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/algospot-clocksync/</guid><content:encoded></content:encoded></item><item><title><![CDATA[[gcj2019-qr1]Foregone Solution]]></title><description><![CDATA[Foregone Solution 생각 4는 2 2 로 나뉘기 때문에 4를 2로 변경해주면 된다.
+숫자가 크기때문에 스트링으로 출력
+숫자형태로 만들기 위해서 앞의 0은 제거]]></description><link>https://gatsby-starter-blog-demo.netlify.com/gcj2019-qr1/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/gcj2019-qr1/</guid><pubDate>Thu, 09 Jan 2020 16:44:23 GMT</pubDate><content:encoded>&lt;h1&gt;&lt;a href=&quot;https://codingcompetitions.withgoogle.com/codejam/round/0000000000051705/0000000000088231&quot;&gt;Foregone Solution&lt;/a&gt;&lt;/h1&gt;
+&lt;h2&gt;생각&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;4는 2 2 로 나뉘기 때문에 4를 2로 변경해주면 된다.
+숫자가 크기때문에 스트링으로 출력
+숫자형태로 만들기 위해서 앞의 0은 제거&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;package codejam.qr2019.q1;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.Scanner;
+
+public class Solution {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(new BufferedReader(new InputStreamReader(System.in)));
+        int tc = in.nextInt();
+        in.nextLine();
+        for(int i = 0; i &amp;lt; tc ; i++) {
+            String num = in.nextLine();
+            String num1 = num.replaceAll(&amp;quot;4&amp;quot;,&amp;quot;2&amp;quot;);
+            String num2 = num.replaceAll(&amp;quot;[^4]&amp;quot;,&amp;quot;0&amp;quot;)
+                    .replaceAll(&amp;quot;4&amp;quot;,&amp;quot;2&amp;quot;)
+                    .replaceAll(&amp;quot;^0*2&amp;quot;,&amp;quot;2&amp;quot;)
+                    ;
+            System.out.println(String.format(&amp;quot;Case #%d: %s %s&amp;quot;,i+1,num1,num2));
+        }
+
+    }
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[[algospot]tsp1]]></title><description><![CDATA[TSP1 재귀 호출]]></description><link>https://gatsby-starter-blog-demo.netlify.com/algospot-tsp1/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/algospot-tsp1/</guid><pubDate>Mon, 06 Jan 2020 16:15:24 GMT</pubDate><content:encoded>&lt;h1&gt;TSP1&lt;/h1&gt;
+&lt;h2&gt;재귀 호출&lt;/h2&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;package algospot.tsp1;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) throws FileNotFoundException {
+        Scanner sc = new Scanner(new FileInputStream(&amp;quot;algospot/tsp1/input.txt&amp;quot;));
+        int tc = sc.nextInt();
+        for( int i = 0; i &amp;lt; tc; i++) {
+            int cities = sc.nextInt();
+            double[][] map = new double[cities][cities];
+
+            for( int j = 0 ; j &amp;lt; cities*cities;j++) {
+                int y = j / cities;
+                int x = j % cities;
+                map[y][x] = sc.nextDouble();
+            }
+            double res = Double.MAX_VALUE;
+            for( int k = 0 ; k &amp;lt; cities; k++) {
+                boolean[] visits = new boolean[cities];
+                visits[k] = true;
+                res = Math.min(res,traverse(map, visits, k));
+            }
+            System.out.println(res);
+
+        }
+
+    }
+
+    // input: 도시간 거리 정보 double[][], 방문여부 boolean[], 시작점 int
+    // output: 최소 여행 길이
+    public static double traverse(double[][] map, boolean[] visits, int st) {
+
+        int next = -1;
+        for( int i = 0;  i &amp;lt; visits.length ; i++) {
+            if( !visits[i]) {
+                next = i;
+                break;
+            }
+        }
+        // 모두 방문했다면
+        if( next == -1) {
+            return 0;
+        }
+        double minDist = Double.MAX_VALUE;
+        for(int i = 0 ; i &amp;lt; visits.length; i++) {
+            if(!visits[i]) {
+                visits[i]= true;
+                double dist = map[st][i] + traverse(map,visits,i);
+                visits[i]= false;
+                if( dist &amp;lt; minDist) {
+                    minDist = dist;
+                }
+            }
+        }
+        return minDist;
+    }
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[[algospot]boardcover]]></title><description><![CDATA[BOARDCOVER 재귀호출]]></description><link>https://gatsby-starter-blog-demo.netlify.com/algospot-boardcover/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/algospot-boardcover/</guid><pubDate>Sat, 04 Jan 2020 17:40:56 GMT</pubDate><content:encoded>&lt;h1&gt;&lt;a href=&quot;https://algospot.com/judge/problem/read/BOARDCOVER&quot;&gt;BOARDCOVER&lt;/a&gt;&lt;/h1&gt;
 &lt;h2&gt;재귀호출&lt;/h2&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;public class Main {
 
@@ -167,7 +260,96 @@ FactoryBean의 getObject 메소드가 생성해주는 객체가 aaa빈으로 등
 &lt;h2&gt;프록시 팩토리 빈&lt;/h2&gt;
 &lt;p&gt;jdk에서는 다이나믹 프록시 외에도 프록시를 만들 수 있도록 다양한 기술을 지원한다. 따라서 스프링은 일관된 방법으로 프록시를 만들 수 있게끔 추상화 된 레이어를 제공한다.&lt;/p&gt;
 &lt;h3&gt;MethodInterceptor vs InvocationHandler&lt;/h3&gt;
-&lt;p&gt;invocationHandler.invoke는 타겟에 대한 정보를 제공하지 않기 때문에 직접 invocationHandler가 타겟을 알고 있어야 하지만, MethodInterceptor의 invoke는 proxyFactoryBean으로부터 타겟 정보도 제공받으므로, MethodInterceptor의 경우 타겟과 독립적으로 만들어지고,사용될 수 있다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[[algospot]picnic]]></title><description><![CDATA[PICNIC 재귀호출]]></description><link>https://gatsby-starter-blog-demo.netlify.com/algospot-picnic/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/algospot-picnic/</guid><pubDate>Fri, 03 Jan 2020 17:31:38 GMT</pubDate><content:encoded>&lt;h1&gt;&lt;a href=&quot;https://algospot.com/judge/problem/read/PICNIC&quot;&gt;PICNIC&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;invocationHandler.invoke는 타겟에 대한 정보를 제공하지 않기 때문에 직접 invocationHandler가 타겟을 알고 있어야 하지만, MethodInterceptor의 invoke는 proxyFactoryBean으로부터 타겟 정보도 제공받으므로, MethodInterceptor의 경우 타겟과 독립적으로 만들어지고,사용될 수 있다.&lt;/p&gt;
+&lt;p&gt;타겟으로부터 독립될 수 있다면 MethodInterceptor는 타겟에 독립적으로 빈으로 등록되어 여러 타겟이 공유할 수 있다(싱글톤 패턴)
+포인트컷 역시 타겟에 독립될 수 있다면 빈으로 등록되어 여러 타겟이 공유할 수 있다(싱글톤 패턴)&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;중복 문제의 접근 방법
+1. jdbc api를 사용하는 dao 코드에서 메소드 마다 try/catch/finally 블록 중복 발생
+    - 바뀌는 부분과 바뀌지 않는 부분으로 분리, 템플릿/콜백 패턴으로 해결
+2. 반복적인 위임 코드가 필요한 프록시
+    - 다이나믹 프록시라는 런타임 코드 자동생성 기법 사용하여 해결&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;팩토리 빈의 한계를 스프링 프록시 팩토리 빈으로 개선&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;팩토리 빈의 문제상황 인지&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;한번에 여러 클래스에 부가기능 제공 불가능&lt;/li&gt;
+&lt;li&gt;InvocationHandler는 타겟을 의존하고 있으므로, 타겟 적용 갯수만큼 늘어남&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;문제상황을 어떻게 해결할지 고민&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;한번에 여러 클래스에 부가기능 제공 불가능에서 변하는 부분과 변하지 않는 부분을 설정&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;변하는 부분: 부가기능을 적용할 실제 타겟&lt;/li&gt;
+&lt;li&gt;변하지 않는부분: 타겟의 타입에 맞는 프록시 생성 작업&lt;/li&gt;
+&lt;li&gt;고려 방향: 부가기능을 적용할 실제 타겟의 리스트를 주입받아 프록시 생성 작업을 자동으로 할 수 있다면?? =&gt; 빈 후처리기&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;InvocationHandler는 타겟을 의존하고 있으므로, 중복해서 발생하는 문제&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;변하는 부분: 실제 부가기능을 적용할 타겟&lt;/li&gt;
+&lt;li&gt;변하지 않는 부분: 적용할 부가기능&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;고려 방향: 타겟을 주입받아서 부가기능을 적용시킬 수 있다면?? =&gt; 어드바이스, 포인트 컷&lt;/p&gt;
+&lt;h2&gt;빈 후처리기&lt;/h2&gt;
+&lt;p&gt;빈 후처리기는 빈 설정파일을 통해 생성된 빈 객체들을 조건에 맞게 수정하거나, 대체할 수 있다. &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;DefaultAdvisorAutoProxyCreator 동작 원리&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;등록된 빈중에서 Advisor를 구현한 객체들을 모두 찾는다.&lt;/li&gt;
+&lt;li&gt;생성되는 모든 빈에 대해서 어드바이저 포인트컷의 적용대상일 경우 프록시를 만들어서 원래 빈을 대체한다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;AspectJ 포인트컷 표현식&lt;/h3&gt;
+&lt;p&gt;AspectJ 표현식의 대상을 표현하는데 다양한 방법이 있다.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;execution - 메소드의 시그니처를 비교하는 방식 (ex: Object.class.getMethod(“getClass”))&lt;/li&gt;
+&lt;li&gt;bean - 빈이름으로 대상을 설정 (클래스와 메소드기준을 넘어섬)&lt;/li&gt;
+&lt;li&gt;@annotation - 특정 어노테이션으로 대상을 설정(ex: @anootation(org.springframework.transaction.Transactional))&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;주의점: AspectJ 포현식의 타입패턴의 경우 객체의 클래스만을 비교하는것이 아닌 객체의 모든 타입을 비교하여 대상을 결정한다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;ex: A-&gt;B(C) [A: 자식 클래스 , B: 부모 클래스, (C): 부모 인터페이스] 라고할때 클래스 명으로 대상을 정할때 A 객체는 A타입이기도하면서 B 타입이기도 하며, C타입이기도 하다. 따라서 클래스 명 조건이 A,B,C중에 하나라도 적용된다면 대상에 포함된다.(AspectJ 타입패턴에 한해)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;리마인드&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;서비스 추상화
+비지니스 로직에 트랜잭션 경계설정 -&gt; 트랜잭션 기술에 종속적인 코드 발생 -&gt; 서비스 추상으로 일관된 경계설정(트랜잭션 구현기술 DI)
+추상화란: 인터페이스와 DI를 통해 &lt;code class=&quot;language-text&quot;&gt;무엇을 하는지는(추상흐름)&lt;/code&gt; 남기고 &lt;code class=&quot;language-text&quot;&gt;어떻게 하는지(구체적 구현)&lt;/code&gt;를 분리한것&lt;/li&gt;
+&lt;li&gt;데코레이션 패턴
+비지니스 로직에 트랜잭션 경계설정 코드 혼재 -&gt; 데코레이션 패턴으로 분리&lt;/li&gt;
+&lt;li&gt;다이나믹 프록시 &amp;#x26; 프록시 팩토리 빈
+데코레이션 패턴을 적용하기 위해서 모든 메소드 구현 및 트랜잭션(부가기능) 중복발생 -&gt; 다이나믹 프록시 적용 -&gt; 여러 클래스에 적용할 때 중복 발생 -&gt; 프록시 팩토리 빈(프록시 기술 추상화) 적용 -&gt; 어드바이스, 포인트컷을 타겟에 독립적으로 사용 가능&lt;/li&gt;
+&lt;li&gt;자동 프록시 생성
+트랜잭션 적용 대상마다 프록시 팩토리 빈 적용하여 중복 발생 -&gt; 빈 후처리기 적용 -&gt; AspectJ를 통한 포인트컷 표현식 적용&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;AOP 용어&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;타겟 - 부가기능을 적용할 대상&lt;/li&gt;
+&lt;li&gt;어드바이스 - 부가기능&lt;/li&gt;
+&lt;li&gt;조인포인트 - 어드바이스가 적용될 수 있는 위치(프록시의 경우 메소드 실행단계)&lt;/li&gt;
+&lt;li&gt;포인트컷 - 조인포인트를 선별하는 작업 혹은 모듈&lt;/li&gt;
+&lt;li&gt;프록시 - 클라이언트와 타겟 사이에서 요청을 대신 받아 타겟에 위임하면서 부가기능을 부여하는 객체&lt;/li&gt;
+&lt;li&gt;어드바이저 - 포인트컷 + 어드바이스(스프링 aop 용어, 단순한 애스팩트)&lt;/li&gt;
+&lt;li&gt;애스팩트 - aop의 기본모듈 &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;프록시 AOP 준비작업&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;자동 프록시 생성기 - DefaultAdvisorAutoProxyCreator&lt;/li&gt;
+&lt;li&gt;어드바이스&lt;/li&gt;
+&lt;li&gt;포인트컷&lt;/li&gt;
+&lt;li&gt;어드바이저&lt;/li&gt;
+&lt;/ol&gt;</content:encoded></item><item><title><![CDATA[[algospot]picnic]]></title><description><![CDATA[PICNIC 재귀호출]]></description><link>https://gatsby-starter-blog-demo.netlify.com/algospot-picnic/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/algospot-picnic/</guid><pubDate>Fri, 03 Jan 2020 17:31:38 GMT</pubDate><content:encoded>&lt;h1&gt;&lt;a href=&quot;https://algospot.com/judge/problem/read/PICNIC&quot;&gt;PICNIC&lt;/a&gt;&lt;/h1&gt;
 &lt;h2&gt;재귀호출&lt;/h2&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;package algospot.picnic;
 
