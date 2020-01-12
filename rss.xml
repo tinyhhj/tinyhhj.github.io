@@ -1,4 +1,254 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Gatsby Starter Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 09 Jan 2020 17:53:22 GMT</lastBuildDate><item><title><![CDATA[No title]]></title><link>https://gatsby-starter-blog-demo.netlify.com/algospot-clocksync/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/algospot-clocksync/</guid><content:encoded></content:encoded></item><item><title><![CDATA[[gcj2019-qr1]Foregone Solution]]></title><description><![CDATA[Foregone Solution 생각 4는 2 2 로 나뉘기 때문에 4를 2로 변경해주면 된다.
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Gatsby Starter Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 12 Jan 2020 08:57:08 GMT</lastBuildDate><item><title><![CDATA[[boj]9663]]></title><description><![CDATA[boj9663 backtracking]]></description><link>https://gatsby-starter-blog-demo.netlify.com/boj-9663/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/boj-9663/</guid><pubDate>Sun, 12 Jan 2020 08:53:22 GMT</pubDate><content:encoded>&lt;h1&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/6603&quot;&gt;boj9663&lt;/a&gt;&lt;/h1&gt;
+&lt;h2&gt;backtracking&lt;/h2&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;package boj;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import java.util.stream.IntStream;
+
+import static java.lang.Math.abs;
+
+public class Boj9663 {
+    boolean[][] board;
+    static boolean[] x;
+    static boolean[] ru;
+    static boolean[] rd;
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(new BufferedReader(new InputStreamReader(System.in)));
+        int n = sc.nextInt();
+        x = new boolean[14];
+        ru = new boolean[27];
+        rd = new boolean[27];
+        System.out.println(putQueen(n,0,n, new boolean[n][n], new ArrayList&amp;lt;&amp;gt;()));
+    }
+
+    //backtracking
+    //input: n, st-index, board
+    //output: int
+    public static int putQueen(int n, int cur, int remain, boolean[][] board, List&amp;lt;Integer&amp;gt; queens) {
+        if( cur &amp;gt;= n &amp;amp;&amp;amp; remain &amp;gt; 0) {
+            return 0;
+        } else if( cur &amp;gt;= n ) {
+            return 1;
+        }
+       // can put?
+        int res = 0;
+        for( int i = 0; i &amp;lt; n ; i++) {
+            if( canPut(cur , i , board, queens)) {
+                x[i] = ru[cur+i] = rd[cur-i+board.length-1] = true;
+                res += putQueen(n,cur+1, remain-1, board, queens);
+                x[i] = ru[cur+i] = rd[cur-i+board.length-1] = false;
+            }
+        }
+        return res;
+
+    }
+
+    private static boolean canPut(int y, int xx, boolean[][] board, List&amp;lt;Integer&amp;gt; queens) {
+        return !x[xx] &amp;amp;&amp;amp; !ru[y+xx] &amp;amp;&amp;amp; !rd[y-xx+board.length-1];
+    }
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[[gcj2019-qr2]Foregone Solution]]></title><description><![CDATA[qr2019-2 backtracking]]></description><link>https://gatsby-starter-blog-demo.netlify.com/gcj2019-qr2/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/gcj2019-qr2/</guid><pubDate>Sun, 12 Jan 2020 08:53:22 GMT</pubDate><content:encoded>&lt;h1&gt;&lt;a href=&quot;https://codingcompetitions.withgoogle.com/codejam/round/0000000000051705/00000000000881da&quot;&gt;qr2019-2&lt;/a&gt;&lt;/h1&gt;
+&lt;h2&gt;backtracking&lt;/h2&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;package codejam.qr2019.q2;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStreamReader;
+import java.util.Scanner;
+
+/**
+ * https://codingcompetitions.withgoogle.com/codejam/round/0000000000051705/00000000000881da
+ * 거꾸로 올라가는방식은?
+ * 일단 첫번째와 끝은 이미 정해져있음
+ * 만날때에는 서로 다른방향으로 가야하기 때문에 방향이 강제됨
+ * n칸이라고할때 n을 두가지 방향으로 어떻게 배치할것인가 S n-1번 E n-1번 움직여야함
+ * 상대가 s로 n-1번움직였다면 아래에있으면 안됨 즉 s를 다쓰면 안됨
+ * 상대가 s를 n-1번쓸때까지 s를 남겨두려면 s를 쓸때 e를 쓰면됨?
+ * 반대방향으로 갈경우 겹치지 않는 이유는 반대의 경우를 가정하고 생각한다.
+ * (가정)반대방향으로만 갔을경우에 어느순간 상대방과 같은 방향으로 이동한다.
+ * 어느지점에서 마주쳤다고 가정했을경우 상대방과 나는 (결과론적으로) 같은 수의 동쪽과 같은수의 남쪽을 사용했을 경우이다.
+ * 그 경우에 다음 이동방향은 상대방과 무조건 반대이므로 겹치지 않게된다.
+ */
+public class Solution {
+    public static void main(String[] args) throws FileNotFoundException {
+//        Scanner sc = new Scanner(new BufferedReader(new InputStreamReader(System.in)));
+        Scanner sc = new Scanner(new BufferedReader(new InputStreamReader(new FileInputStream(&amp;quot;codejam/qr2019/q2/input.txt&amp;quot;))));
+        int tc = sc.nextInt();
+        backtracking(sc, tc);
+    }
+
+    private static void inverseDirection(Scanner sc, int tc) {
+        for(int i =0 ; i &amp;lt; tc ; i++) {
+            int n = sc.nextInt();
+            sc.nextLine();
+            String move = sc.nextLine();
+            char[] newMove = new char[move.length()];
+            int j = 0;
+            for( char a : move.toCharArray()) {
+                if( a == &amp;#39;S&amp;#39;) newMove[j++] = &amp;#39;E&amp;#39;;
+                else newMove[j++] = &amp;#39;S&amp;#39;;
+            }
+            System.out.println(String.format(&amp;quot;Case #%d: %s&amp;quot;,i+1, new String(newMove)));
+        }
+    }
+
+    private static void backtracking(Scanner sc, int tc) {
+        for( int i = 0 ; i &amp;lt; tc; i++) {
+            int n = sc.nextInt();
+            sc.nextLine();
+            String move = sc.nextLine();
+            String path = backtrackingInternal(n,new int[]{0,0},new int[]{0,0},move,&amp;quot;SE&amp;quot;);
+            System.out.println(path);
+        }
+    }
+    private static boolean samePosition(int[] e, int[]m) {
+        return e[0] == m[0] &amp;amp;&amp;amp; e[1] == m[1];
+    }
+    private static boolean boundGrid(int y,int x, int n) {
+        return y &amp;gt;= 0 &amp;amp;&amp;amp; y &amp;lt; n &amp;amp;&amp;amp; x &amp;gt;= 0 &amp;amp;&amp;amp; x &amp;lt; n;
+    }
+    //input : 현재상태 상대방과 나의 위치와 상대방의 이동방향, 나의 가능한 이동방향
+    //output : 중복되지 않는 경로
+    private static String backtrackingInternal(int n, int[] e, int[] m, String ep, String mps) {
+        if( samePosition(e,m) &amp;amp;&amp;amp; ep.length() == 0 ) {
+            return &amp;quot;&amp;quot;;
+        }
+
+        // 이동가능 후보가 없거나 패스가 중복되거나
+        if( (samePosition(e,m) &amp;amp;&amp;amp; ep.substring(0,1).equals(mps))) {
+            return null;
+        } else if(mps.contains(ep.substring(0,1))){
+            mps = mps.replace(ep.substring(0,1),&amp;quot;&amp;quot;);
+        }
+
+
+        for( char d : mps.toCharArray()) {
+
+            if( d == &amp;#39;E&amp;#39; ) {
+                //이동
+                m[1]++;
+                if( ep.charAt(0) == &amp;#39;E&amp;#39;) {
+                    e[1]++;
+                } else {
+                    e[0]++;
+                }
+                //후보군설정
+                String candidates = boundGrid(m[0],m[1]+1,n) ? &amp;quot;E&amp;quot;: &amp;quot;&amp;quot;;
+                candidates += (boundGrid(m[0]+1,m[1],n)) ? &amp;quot;S&amp;quot; : &amp;quot;&amp;quot;;
+                String path = backtrackingInternal(n, e,m,ep.substring(1),candidates);
+                m[1]--;
+                if( ep.charAt(0) == &amp;#39;E&amp;#39;) {
+                    e[1]--;
+                } else {
+                    e[0]--;
+                }
+                if(  path != null) {
+                    return  &amp;quot;E&amp;quot; + path;
+                }
+
+
+            } else {
+                m[0]++;
+                if( ep.charAt(0) == &amp;#39;E&amp;#39;) {
+                    e[1]++;
+                } else {
+                    e[0]++;
+                }
+                String candidates = boundGrid(m[0],m[1]+1,n) ? &amp;quot;E&amp;quot;:&amp;quot;&amp;quot;;
+                candidates += (boundGrid(m[0]+1,m[1],n))?&amp;quot;S&amp;quot;:&amp;quot;&amp;quot;;
+                String path = backtrackingInternal(n,e,m,ep.substring(1),candidates);
+                m[0]--;
+                if( ep.charAt(0) == &amp;#39;E&amp;#39;) {
+                    e[1]--;
+                } else {
+                    e[0]--;
+                }
+                if( path != null) {
+                    return &amp;quot;S&amp;quot; + path;
+                }
+
+
+            }
+        }
+
+
+        return null;
+    }
+
+
+
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[[boj]6603]]></title><description><![CDATA[로또 조합 생각보다 조합을 구현하는 법이 어렵다고 느꼈다. 순열의 경우에는 더 간단하게 구현이 되었던거 같은데 조합의 경우에는 
+집합의 전체갯수, 뽑는 갯수, 현재 index…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/boj-6603/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/boj-6603/</guid><pubDate>Sat, 11 Jan 2020 08:51:53 GMT</pubDate><content:encoded>&lt;h1&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/6603&quot;&gt;로또&lt;/a&gt;&lt;/h1&gt;
+&lt;h2&gt;조합&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;생각보다 조합을 구현하는 법이 어렵다고 느꼈다. 순열의 경우에는 더 간단하게 구현이 되었던거 같은데 조합의 경우에는
+집합의 전체갯수, 뽑는 갯수, 현재 index(집합을 모두 순회했는데 뽑아야하는 갯수가 남아있다면 조합의 경우가 없는 경우이다.)
+nCr = n-1Cr-1 + n-1Cr 의 의미를 돌아보면 n번째 원소를 뽑는경우 나머지에서 r-1개의 원소를 뽑는 경우의수와 n을 뽑지 않아서 나머지에서 r개의 원소를 뽑는경우이다. 즉 재귀호출을 구현할 때에도 집합을 순회하면서 현재 위치를 index로 저장해두면서 현재 index의 원소를 뽑는경우와 안뽑는경우로 나누어 재귀호출을 한다.
+기저조건은 뽑아야하는 갯수를 다 뽑았을 경우이다.
+그 외 집합을 모두 순회한경우에도 뽑아야하는 갯수를 다 뽑지 못한경우는 조합을 조립하지 못하는 경우이므로 넘어간다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;package boj;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
+public class Boj6603 {
+    public static void main(String[] args) throws FileNotFoundException {
+//        7 1 2 3 4 5 6 7
+//        8 1 2 3 5 8 13 21 34
+//        0
+//        Scanner sc = new Scanner(new BufferedReader(new InputStreamReader(new FileInputStream(&amp;quot;boj/6603.txt&amp;quot;))));
+        Scanner sc = new Scanner(new BufferedReader(new InputStreamReader(System.in)));
+        int n = sc.nextInt();
+        while(n != 0) {
+            int[] arr = new int[n];
+            for( int i =0 ; i &amp;lt; n ; i++) {
+                arr[i]= sc.nextInt();
+            }
+            printLotto(IntStream.of(arr).boxed().collect(Collectors.toList()),6,0,new ArrayList&amp;lt;&amp;gt;());
+           n = sc.nextInt();
+           System.out.println(&amp;quot;&amp;quot;);
+        }
+    }
+
+    // 조합
+    // input: 집합, 뽑아야하는 조합개수, 지금까지 뽑은 숫자들
+    // output: void
+    // 어떻게 조합을 중복제거할 수 있을까
+    public static void printLotto(List&amp;lt;Integer&amp;gt; group, int k, int cur, List&amp;lt;Integer&amp;gt; arr) {
+        if( arr.size() == k) {
+            out(arr);
+        } else if( cur == group.size()) return;
+        else {
+
+            arr.add(group.get(cur));
+            printLotto(group, k, cur + 1, arr);
+            arr.remove(arr.size() - 1);
+            printLotto(group, k, cur + 1, arr);
+        }
+    }
+
+    public static void out(List&amp;lt;Integer&amp;gt; list) {
+        StringBuilder sb = new StringBuilder();
+        for(Integer i : list) {
+            sb.append(&amp;quot; &amp;quot; + i);
+        }
+        System.out.println(sb.substring(1));
+    }
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[[gcj2019-qr1]Foregone Solution]]></title><description><![CDATA[Foregone Solution 생각 4는 2 2 로 나뉘기 때문에 4를 2로 변경해주면 된다.
 숫자가 크기때문에 스트링으로 출력
 숫자형태로 만들기 위해서 앞의 0은 제거]]></description><link>https://gatsby-starter-blog-demo.netlify.com/gcj2019-qr1/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/gcj2019-qr1/</guid><pubDate>Thu, 09 Jan 2020 16:44:23 GMT</pubDate><content:encoded>&lt;h1&gt;&lt;a href=&quot;https://codingcompetitions.withgoogle.com/codejam/round/0000000000051705/0000000000088231&quot;&gt;Foregone Solution&lt;/a&gt;&lt;/h1&gt;
 &lt;h2&gt;생각&lt;/h2&gt;
@@ -28,6 +278,103 @@ public class Solution {
             System.out.println(String.format(&amp;quot;Case #%d: %s %s&amp;quot;,i+1,num1,num2));
         }
 
+    }
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[[algospot]ClockSync]]></title><description><![CDATA[CLOCKSYNC 생각 (알고리즘: 완전탐색) 완전 탐색이므로 한번씩 눌러보면서 12시로 맞는지 체크하자
+4번씩 누르면 초기화가 되기때문에 0번에서 3번까지 눌러보면서 
+모든 경우의 수를 체크한다. 주의할 점은…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/algospot-clocksync/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/algospot-clocksync/</guid><pubDate>Thu, 09 Jan 2020 16:44:23 GMT</pubDate><content:encoded>&lt;h1&gt;&lt;a href=&quot;https://algospot.com/judge/problem/read/CLOCKSYNC&quot;&gt;CLOCKSYNC&lt;/a&gt;&lt;/h1&gt;
+&lt;h2&gt;생각 (알고리즘: 완전탐색)&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;완전 탐색이므로 한번씩 눌러보면서 12시로 맞는지 체크하자
+4번씩 누르면 초기화가 되기때문에 0번에서 3번까지 눌러보면서
+모든 경우의 수를 체크한다. 주의할 점은 3번까지 눌러놓고 상태를 초기화 해줘야한다. &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;보통 인풋과 아웃풋을 정하는 부분이 힘든데
+아웃풋의 경우 알고리즘이 원하는 답안이 될 경우가 크다.
+문제가 원하는 답은 최소 클릭횟수 이기때문에, 재귀함수로 문제를 풀기위해서는 어느 시점의 최소 클릭횟수를 리턴해주면된다.
+인풋의 경우 상태값이 되는경우가 많다. (시계의 시침의 현재 상태), 또한 진행상황을 기록해야하므로 진행중인 순번도 함께 오는경우가 많다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;package algospot.clocksync;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Main {
+    static int[][] switches = new int[10][];
+    static int[] clocks = new int[16];
+    public static void main(String[] args) throws FileNotFoundException {
+        switches[0] = new int[]{0,1,2};
+        switches[1] = new int[]{3, 7, 9, 11};
+        switches[2] = new int[]{4, 10, 14, 15};
+        switches[3] = new int[]{0, 4, 5, 6, 7};
+        switches[4] = new int[]{6, 7, 8, 10, 12};
+        switches[5] = new int[]{0, 2, 14, 15};
+        switches[6] = new int[]{3, 14, 15};
+        switches[7] = new int[]{4, 5, 7, 14, 15};
+        switches[8] = new int[]{1, 2, 3, 4, 5};
+        switches[9] = new int[]{3, 4, 5, 9, 13};
+
+//        Scanner sc = new Scanner(new BufferedReader(new InputStreamReader(System.in)));
+        Scanner sc = new Scanner(new FileInputStream(&amp;quot;algospot/clocksync/input.txt&amp;quot;));
+
+
+        int tc = sc.nextInt();
+        for( int i =0; i &amp;lt; tc ; i++) {
+            clocks = new int[16];
+            for(int j = 0 ; j &amp;lt; 16; j++) {
+                clocks[j] = sc.nextInt();
+            }
+
+            //버튼을 한개씩 다 눌러본다
+            // 4번누르면 제자리 이므로 3번씩만 눌러본다
+
+            int res;
+            if( (res = click(clocks, 0)) &amp;lt; Integer.MAX_VALUE )  {
+                System.out.println(res);
+            } else {
+                System.out.println(-1);
+            }
+        }
+    }
+
+    //재귀
+    //input: 시계들, 버튼, 누른버튼
+    //output: 현상황에서의 num번부터 누를때 최소횟수
+    static int click(int[] clocks,int num) {
+        if( checkTime(clocks)) {
+            return 0;
+        }
+        if( num == 10) {
+            return Integer.MAX_VALUE;
+        }
+
+        //4번씩 눌러본다. 안누른거 포함
+        int res = Integer.MAX_VALUE;
+        for(int i=0; i &amp;lt; 4; i++) {
+            if( i&amp;gt; 0) push(clocks,num);
+            int min = click(clocks,num+1);
+            if( min != Integer.MAX_VALUE) {
+                res = Math.min(res , min + i);
+            }
+        }
+        //3번까지 눌렀으므로 초기화해줌
+        push(clocks,num);
+        return res;
+    }
+    static void push(int[] clocks,int num) {
+        for (int m : switches[num]) {
+            clocks[m] = clocks[m] == 12 ? 3 : clocks[m]+3;
+        }
+    }
+    static boolean checkTime(int[] clocks) {
+        return Arrays.stream(clocks).allMatch(i-&amp;gt;i==12);
+    }
+    static int total(int[] buttons) {
+        return Arrays.stream(buttons).sum();
     }
 }&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[[algospot]tsp1]]></title><description><![CDATA[TSP1 재귀 호출]]></description><link>https://gatsby-starter-blog-demo.netlify.com/algospot-tsp1/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/algospot-tsp1/</guid><pubDate>Mon, 06 Jan 2020 16:15:24 GMT</pubDate><content:encoded>&lt;h1&gt;TSP1&lt;/h1&gt;
 &lt;h2&gt;재귀 호출&lt;/h2&gt;
