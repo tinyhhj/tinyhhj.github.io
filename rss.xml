@@ -1,4 +1,121 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Gatsby Starter Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 12 Jan 2020 08:57:08 GMT</lastBuildDate><item><title><![CDATA[[boj]9663]]></title><description><![CDATA[boj9663 backtracking]]></description><link>https://gatsby-starter-blog-demo.netlify.com/boj-9663/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/boj-9663/</guid><pubDate>Sun, 12 Jan 2020 08:53:22 GMT</pubDate><content:encoded>&lt;h1&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/6603&quot;&gt;boj9663&lt;/a&gt;&lt;/h1&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Gatsby Starter Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 13 Jan 2020 17:49:44 GMT</lastBuildDate><item><title><![CDATA[[gcj2019-qr3]Cryptopangrams]]></title><description><![CDATA[Cryptopangrams gcd(최대 공약수) 이 문제를 해결하는데 엄청나게 시간을 낭비했다. 풀이 1: 인접한 두 수의 최대 공약수 구하기(a * b = c, b * d = e 일때 c,e 의 최대 공약수는 b이다.) 접근…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/gcj2019-qr3/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/gcj2019-qr3/</guid><pubDate>Mon, 13 Jan 2020 17:32:51 GMT</pubDate><content:encoded>&lt;h1&gt;&lt;a href=&quot;https://codingcompetitions.withgoogle.com/codejam/round/0000000000051705/000000000008830b&quot;&gt;Cryptopangrams&lt;/a&gt;&lt;/h1&gt;
+&lt;h2&gt;gcd(최대 공약수)&lt;/h2&gt;
+&lt;p&gt;이 문제를 해결하는데 엄청나게 시간을 낭비했다.&lt;/p&gt;
+&lt;p&gt;풀이 1: 인접한 두 수의 최대 공약수 구하기(a * b = c, b * d = e 일때 c,e 의 최대 공약수는 b이다.)&lt;/p&gt;
+&lt;p&gt;접근 1으로 풀었을 때, 이 문제의 함정을 조심해야한다.&lt;/p&gt;
+&lt;p&gt;접근 2: 풀이 1로만 접근했을 때에는 ABABABB 와 BABABAA 를 판별하지 못한다. 왜냐하면 AB와 BA의 최대 공약수는 자기자신 AB이기 때문이다.
+즉, 최대공약수를 통해서 소수를 유추해내려면 적어도 2쌍의 다른 소수의 곱이 필요하다 (예: AB BC =&gt; gcd = B로 유추가능, AB BA =&gt; gcd AB 유추 불가능)&lt;/p&gt;
+&lt;p&gt;접근 3: 접근 2까지 했으나 visible set은 통과하나 hidden set은 통과를 못함. 결국 유투브에서 원인을 찾아낼 수 있었음
+소수의 크기가 10^100이기때문에 BigInteger를 사용해야만 했는데 시스템 입력에서 읽어올때 &lt;strong&gt;BigInteger.valueOf(sc.nextInt())&lt;/strong&gt; 식으로 읽어오고 있던걸 &lt;strong&gt;sc.nextBigInteger()&lt;/strong&gt;로 읽어오니까 통과함 &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;package codejam.qr2019.q3;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStreamReader;
+import java.math.BigInteger;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) throws FileNotFoundException {
+        Scanner sc = new Scanner(new BufferedReader(new InputStreamReader(System.in)));
+        int tc = sc.nextInt();
+        sc.nextLine();
+        for( int i = 0 ; i &amp;lt; tc ; i++ ) {
+            SortedSet&amp;lt;BigInteger&amp;gt; primes = new TreeSet&amp;lt;&amp;gt;();
+            BigInteger n = sc.nextBigInteger();
+            int l = sc.nextInt();
+            List&amp;lt;BigInteger&amp;gt; input = new ArrayList&amp;lt;&amp;gt;();
+            List&amp;lt;BigInteger&amp;gt; primesOrder = new ArrayList&amp;lt;&amp;gt;();
+            BigInteger prev = sc.nextBigInteger();
+            int idx = 0;
+            for( int j = 1 ; j &amp;lt; l; j++) {
+                BigInteger number = sc.nextBigInteger();
+                BigInteger prevNumber =prev;
+                if( prevNumber.compareTo(number) != 0 ) {
+                    BigInteger prime = gcd(number, prevNumber);
+                    if( j % 2 != 0) {
+                        //BABAA ABABB
+                        //BAC
+                        // AAAAB
+                        BigInteger other = prevNumber.divide(prime);
+                        for( int k = 0 ; k &amp;lt;= j ; k++) {
+                            primesOrder.add(k %2 == 0 ? other: prime);
+                        }
+                        primesOrder.add(number.divide(prime));
+                    } else {
+                        //ABABAA
+                        BigInteger other = prevNumber.divide(prime);
+                        for( int k = 0 ; k &amp;lt;= j ; k++) {
+                            primesOrder.add(k %2 == 0 ? prime: other);
+                        }
+                        primesOrder.add(number.divide(prime));
+                    }
+                    idx = j;
+                    break;
+                }
+            }
+            for( int j = idx+1; j &amp;lt; l ; j++) {
+                // 12 23 34 ..  end-1 end
+                BigInteger num = sc.nextBigInteger();
+                BigInteger prevNum = primesOrder.get(primesOrder.size()-1);
+                BigInteger number = num.divide(prevNum);
+                primesOrder.add(number);
+            }
+//            primesOrder.add(input.get(input.size()-1).divide(primesOrder.get(primesOrder.size()-1)));
+            primes.addAll(primesOrder);
+
+//            Assert.check(primes.size() == 26);
+//            Assert.check(primes.first().compareTo(primes.last()) &amp;lt; 0);
+
+            Iterator&amp;lt;BigInteger&amp;gt; it = primes.iterator();
+            Map&amp;lt;BigInteger, Integer&amp;gt; mapping = new HashMap&amp;lt;&amp;gt;();
+            int cnt = 0 ;
+            while(it.hasNext()) {
+                mapping.put(it.next(), cnt++);
+            }
+            char[] alphabet = &amp;quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&amp;quot;.toCharArray();
+            System.out.print(String.format(&amp;quot;Case #%d: &amp;quot;,i+1));
+            for( BigInteger p : primesOrder) {
+                System.out.print(alphabet[mapping.get(p)]);
+            }
+            System.out.println(&amp;quot;&amp;quot;);
+
+        }
+
+
+    }
+
+    public static BigInteger gcd(BigInteger a , BigInteger b) {
+        if( a.compareTo(b) &amp;lt; 0) {
+            BigInteger tmp = a;
+            a = b;
+            b = tmp;
+        }
+        while(b.compareTo(BigInteger.ZERO) != 0) {
+            BigInteger r = a.mod(b);
+            a = b;
+            b = r;
+        }
+        return a;
+    }
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[Spring Chap. 7]]></title><description><![CDATA[스프링 기술 응용 SQL 분리 기존의 Dao를 인터페이스로 구현하여 데이터 액세스 기술에 독립적으로 변경할 수 있게 되었다. 그러나 테이블의 정보를 담고있는 sql이 변경된다면,
+dao의 변경은 sql에 독립적인 dao를 만들기 위해서 sql…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/spring7/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/spring7/</guid><pubDate>Sun, 12 Jan 2020 17:18:17 GMT</pubDate><content:encoded>&lt;h1&gt;스프링 기술 응용&lt;/h1&gt;
+&lt;h2&gt;SQL 분리&lt;/h2&gt;
+&lt;p&gt;기존의 Dao를 인터페이스로 구현하여 데이터 액세스 기술에 독립적으로 변경할 수 있게 되었다. 그러나 테이블의 정보를 담고있는 sql이 변경된다면,
+dao의 변경은 sql에 독립적인 dao를 만들기 위해서 sql을 분리시켜보자. sql을 분리시키기 위해서는 변하는 작업과 변하지 않는 작업을 구분한다.
+변하는 작업은 기존 dao의 데이터 액세스 로직이고, 변하는 로직은 sql이다. 즉 변하는 부분을 스프링 컨테이너를 통해서 DI받도록 수정해본다. &lt;/p&gt;
+&lt;p&gt;문제점: dao가 sql에 의존적이기 때문에 sql이 변경될 시(생각보다 잦음), dao를 함께 수정해줘야 함
+해결: sql을 DI받는다. &lt;/p&gt;
+&lt;p&gt;문제점: sql이 새로 추가될때마다, 새로운 프로퍼티 추가 및 수정메소드를 만드는 변경이 뒤 따른다.
+해결: sql을 콜렉션 형태로 DI받는다.&lt;/p&gt;
+&lt;p&gt;문제점: sql과 DI 설정정보가 섞여있으면 관리하기에 좋지 않을뿐더러, sql을 꼭 빈 설정정보에(xml)뿐 아니라, 별도의 파일이나, db, 원격서버에서 sql을 읽어올 수 있도록 확장이 불가능하다. 또한 스프링 설정파일로부터 주입받는 정보들은 어플리케이션을 다시 시작하기 전까지는 변경이 어렵다.
+해결: sql을 제공받을 수 있는 기능을 확장이 용이하도록, dao에 sql을 제공해주는 기능을 독립 시킨다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;sql 제공 인터페이스 input: sql key / output: sql
+ß&lt;/p&gt;
+&lt;/blockquote&gt;</content:encoded></item><item><title><![CDATA[[boj]9663]]></title><description><![CDATA[boj9663 backtracking]]></description><link>https://gatsby-starter-blog-demo.netlify.com/boj-9663/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/boj-9663/</guid><pubDate>Sun, 12 Jan 2020 08:53:22 GMT</pubDate><content:encoded>&lt;h1&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/6603&quot;&gt;boj9663&lt;/a&gt;&lt;/h1&gt;
 &lt;h2&gt;backtracking&lt;/h2&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;package boj;
 
