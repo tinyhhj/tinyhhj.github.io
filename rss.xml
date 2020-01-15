@@ -1,4 +1,131 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Gatsby Starter Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 13 Jan 2020 17:49:44 GMT</lastBuildDate><item><title><![CDATA[[gcj2019-qr3]Cryptopangrams]]></title><description><![CDATA[Cryptopangrams gcd(최대 공약수) 이 문제를 해결하는데 엄청나게 시간을 낭비했다. 풀이 1: 인접한 두 수의 최대 공약수 구하기(a * b = c, b * d = e 일때 c,e 의 최대 공약수는 b이다.) 접근…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/gcj2019-qr3/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/gcj2019-qr3/</guid><pubDate>Mon, 13 Jan 2020 17:32:51 GMT</pubDate><content:encoded>&lt;h1&gt;&lt;a href=&quot;https://codingcompetitions.withgoogle.com/codejam/round/0000000000051705/000000000008830b&quot;&gt;Cryptopangrams&lt;/a&gt;&lt;/h1&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Gatsby Starter Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 15 Jan 2020 15:23:19 GMT</lastBuildDate><item><title><![CDATA[[gcj2019-qr4]Dat Bae]]></title><description><![CDATA[Dat Bae 비트 연산자?? 입력: n개의 비트
+출력: 부서진 워커 id n개의 비트가 주어졌을 때, 부서진 워커를 제외하고 응답이 옴. 워커의 index가 곧 id…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/gcj2019-qr4/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/gcj2019-qr4/</guid><pubDate>Tue, 14 Jan 2020 11:02:43 GMT</pubDate><content:encoded>&lt;h1&gt;&lt;a href=&quot;https://codingcompetitions.withgoogle.com/codejam/round/0000000000051705/00000000000881de&quot;&gt;Dat Bae&lt;/a&gt;&lt;/h1&gt;
+&lt;h2&gt;비트 연산자??&lt;/h2&gt;
+&lt;p&gt;입력: n개의 비트
+출력: 부서진 워커 id&lt;/p&gt;
+&lt;p&gt;n개의 비트가 주어졌을 때, 부서진 워커를 제외하고 응답이 옴. 워커의 index가 곧 id이기때문에 몇번째 워커가 죽었는지 판단하면 됨.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;무식하게 풀 수 있을까?
+처음 문제를 보고 드는 생각은 재귀형식이었다. 비트가 n/2로 나눠도 크기가 작지만 같은 문제이기 때문에?
+n개의 비트중에 응답이 없는게 있으므로 순서 자체가 바뀌지 않았지만, 출력에 대응되는 index가 바뀌었다.
+n개를 입력으로 줬을경우에 n-b가 출력된다고 가정&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;N = 5 and the 0th and 3rd workers are broken (so B = 2).
+TEST&lt;em&gt;STORE 01101 returns 111.
+TEST&lt;/em&gt;STORE 00110 returns 010.
+TEST&lt;em&gt;STORE 01010 returns 100.
+TEST&lt;/em&gt;STORE 11010 also returns 100.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;1차 set에는 10번까지 query할 수 있고, 2차 set에서는 5번까지 query할 수 있지만, 기본적인 흐름도 구현을 못한채, 난 오로지 더 효율적인 알고리즘(방법)만을 생각했다.(주어진 기회를 모두 활용할 생각조차 애초에 안했다.) 문득 문제를 풀때마다, 자주 발견되는 실수인데 최대의 효율만을 목표로 삼아 정작 문제는 하나도 건들이지 못한 경우가 많다. 이 문제에서도 바로 그런 실수를 했던것 같다.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;해결: 결국 혼자 너무 많은 시간을 낭비하기보다 주어진 답안을 어느정도 참고하는게 좋다고 생각이 들어서 1차 set의 솔루션을 참고했다.
+즉 10번의 query를 던질 수 있으며 최대 비트수는 1024이다. 즉 2^10은 1024이기때문에 어느정도 문제 출제자가 힌트를 준셈이나 마찬가지였다.
+n개의 비트를 10번 던져서 몇번 비트가 고장났는지 찾기 힘든이유는 0과 1만 사용할 수 있기 때문이다. 0과 1 밖에 없기때문에 01010이 나왔을 때, 순서를
+기억하지 못하기 때문이다. 즉 0-9까지 사용할 수 있다고 생각한다면 10자리 비트의 경우에 1번의 query로 몇번 비트가 고장났는지 알 수 있다.
+0123456789 -&gt; 01234589 일경우 (67이 빠짐을 바로 알 수 있다.), 즉 각 비트마다 고유의 값으로 구분할 수 있다면 어느 비트가 고장났는지 알 수 있다. 따라서 query를 10번 던질수 있다는 말은 10번의 쿼리를 던져서 각 순서마다 고유한 값을 매핑시켜줄 수 있다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;n이 5라고 했을경우에 왼쪽 열부터 0 1 2 3 4를 매핑시켜줄 수 있다. 즉 10번의 query라는 말은 1024개의 각각 다른 값을 하나의 열에 매핑시킬 수 있다는 말이다.
+01010
+00110
+00001
+00000
+00000&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;위 해결방법을 이용하면 1set을 풀수 있고, 2번의 경우에는 query가 5번이므로 32개의 고유한값을 매핑시켜줄 수 있는 반면에 n은 최대가 1024이다.
+하지만 고장난 워커의 갯수는 최대가 15인데, 이 말인 즉, 고장난 워커들이 한곳에 다 뭉쳐있다고 하더라도 32개보다 작으므로 하나의 세트가 통째로 없어지는 일은 없다는 말이다. 즉 (1-32)(1-32)(1-32).. 32개의 고유한값을 반복적으로 이어나갈때 32 이후에 다시 1이 나타난다고 했을경우에 32과 1사이에 하나의 세트가(32개) 통째로 들어갈 수 없으므로 하나의 세트에서 다음 세트로 넘어갔을 경우에는 (N(i) &gt; N(i+1)) 32를 앞의 세트갯수만큼 offset해주면 된다.&lt;/p&gt;
+&lt;p&gt;느낀점: 처음으로 interactive한 문제를 풀어봤는데 문제를 위해 제공해준 interactive&lt;em&gt;runner 부터 testing&lt;/em&gt;tool까지 정말 신세계였다. 너무 신기하고 좋은 경험이었다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Solution {
+    public static void main(String[] args) {
+        String enc = new java.io.OutputStreamWriter(System.out).getEncoding();
+
+        System.err.println(&amp;quot;default encoding = &amp;quot; + enc);
+        System.err.flush();
+        Scanner sc = new Scanner(new BufferedReader(new InputStreamReader(System.in)));
+        int tc = sc.nextInt();
+        System.err.println(&amp;quot;tc &amp;quot; + tc);
+//        System.err.flush();
+        for( int i = 0 ; i &amp;lt; tc ; i++) {
+            int n = sc.nextInt(),
+                b = sc.nextInt(),
+                f = sc.nextInt();
+            System.err.println(&amp;quot;nbf &amp;quot; + n + b+f);
+//            System.err.flush();
+            sc.nextLine();
+            List&amp;lt;String&amp;gt; response = new ArrayList&amp;lt;&amp;gt;();
+
+            for( int j = 0 ; j &amp;lt; f ; j++) {
+                query(n,b,f,response, sc);
+            }
+            System.err.println(&amp;quot;finish query&amp;quot;);
+            solve(n,b,f,response);
+
+            if( sc.nextInt() == -1) {
+                System.exit(1);
+            }
+        }
+
+    }
+
+    private static void solve(int n, int b, int f, List&amp;lt;String&amp;gt; response) {
+        List&amp;lt;Integer&amp;gt; workers = new ArrayList&amp;lt;&amp;gt;();
+        boolean[] workersOrig = new boolean[n];
+        for( int i = 0 ; i &amp;lt; n-b ; i++) {
+            int res = 0;
+            for( int j = f-1 ; j &amp;gt;= 0 ; j--) {
+                if(response.get(j).toCharArray()[i] -&amp;#39;0&amp;#39; == 1)
+                    res++;
+                res = res &amp;lt;&amp;lt; 1;
+            }
+            workers.add(res &amp;gt;&amp;gt; 1);
+        }
+
+//        System.err.println(&amp;quot;expected workers: &amp;quot; + workers);
+        workersOrig[workers.get(0)] = true;
+        int up = 0;
+        for( int i = 1 ; i &amp;lt; workers.size() ; i++) {
+            int id = workers.get(i);
+            if( workers.get(i-1) &amp;gt; id) {
+                up++;
+            }
+            id += (up * 32) ;
+//            System.err.println(&amp;quot;id: &amp;quot; + id);
+            workersOrig[id] = true;
+        }
+        String anwser = &amp;quot;&amp;quot;;
+        for( int i = 0 ; i &amp;lt; n ; i++) {
+            if( !workersOrig[i]) anwser += i + &amp;quot; &amp;quot;;
+        }
+//        System.err.println(&amp;quot;expected solve: &amp;quot; + anwser.substring(0, anwser.length()-1));
+        System.out.println(anwser.substring(0, anwser.length()-1));
+        System.out.flush();
+
+
+    }
+
+    private static void query(int n, int b, int f, List&amp;lt;String&amp;gt; response,Scanner sc) {
+        String res = &amp;quot;&amp;quot;;
+        for( int i = 0 ; i &amp;lt; n ; i++) {
+            res += (((i % 32) &amp;gt;&amp;gt; response.size()) &amp;amp; 1) == 1 ? &amp;quot;1&amp;quot; : &amp;quot;0&amp;quot;;
+        }
+        System.err.println(&amp;quot;query is &amp;quot; + res);
+        System.out.println(res);
+        System.out.flush();
+
+        res = sc.nextLine();
+        System.err.println(&amp;quot;res is &amp;quot; + res);
+
+        if( res.equals(&amp;quot;-1&amp;quot;)) {
+            System.err.println(&amp;quot;error res is &amp;quot; + res);
+            System.err.flush();
+            System.exit(1);
+        }
+
+        response.add(res);
+    }
+
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[[gcj2019-qr3]Cryptopangrams]]></title><description><![CDATA[Cryptopangrams gcd(최대 공약수) 이 문제를 해결하는데 엄청나게 시간을 낭비했다. 풀이 1: 인접한 두 수의 최대 공약수 구하기(a * b = c, b * d = e 일때 c,e 의 최대 공약수는 b이다.) 접근…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/gcj2019-qr3/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/gcj2019-qr3/</guid><pubDate>Mon, 13 Jan 2020 17:32:51 GMT</pubDate><content:encoded>&lt;h1&gt;&lt;a href=&quot;https://codingcompetitions.withgoogle.com/codejam/round/0000000000051705/000000000008830b&quot;&gt;Cryptopangrams&lt;/a&gt;&lt;/h1&gt;
 &lt;h2&gt;gcd(최대 공약수)&lt;/h2&gt;
 &lt;p&gt;이 문제를 해결하는데 엄청나게 시간을 낭비했다.&lt;/p&gt;
 &lt;p&gt;풀이 1: 인접한 두 수의 최대 공약수 구하기(a * b = c, b * d = e 일때 c,e 의 최대 공약수는 b이다.)&lt;/p&gt;
@@ -1334,7 +1461,7 @@ SecurityContextRepository: Security를 저장하는 역할을 담당한다. sess
 &lt;li&gt;3.에서 요청에 context가 존재하여 진행되지 않았다면 해당 context를 다음 요청을 위해 저장한다.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h2&gt;참조&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.baeldung.com/spring-security-session&quot;&gt;baeldung&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Links]]></title><description><![CDATA[links markdown markdown markdown2 github action github action & typescript intellij working directory]]></description><link>https://gatsby-starter-blog-demo.netlify.com/links/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/links/</guid><pubDate>Thu, 26 Dec 2019 12:59:42 GMT</pubDate><content:encoded>&lt;h1&gt;links&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.baeldung.com/spring-security-session&quot;&gt;baeldung&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Links]]></title><description><![CDATA[links markdown markdown markdown2 github action github action & typescript intellij working directory opencv 딥러닝과 OpenCV…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/links/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/links/</guid><pubDate>Thu, 26 Dec 2019 12:59:42 GMT</pubDate><content:encoded>&lt;h1&gt;links&lt;/h1&gt;
 &lt;h2&gt;markdown&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://guides.github.com/features/mastering-markdown/&quot;&gt;markdown&lt;/a&gt;&lt;/li&gt;
@@ -1347,6 +1474,17 @@ SecurityContextRepository: Security를 저장하는 역할을 담당한다. sess
 &lt;h2&gt;intellij&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://stackoverflow.com/questions/19838334/what-is-a-working-directory-in-intellij-idea&quot;&gt;working directory&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;opencv&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://d2.naver.com/helloworld/8344782?refer=%EA%B0%9C%EB%B0%9C%EC%9E%90%EC%8A%A4%EB%9F%BD%EB%8B%A4&quot;&gt;딥러닝과 OpenCV를 활용해 사진 속 글자 검출하기&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://tensorflow.blog/tag/fast-r-cnn/&quot;&gt;텐서플로우 블로그&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://medium.com/@nikolasmoya/simple-algorithm-to-remove-moving-objects-from-pictures-cdd3396c68e0&quot;&gt;객체 지우기&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://pdfs.semanticscholar.org/cf84/81b766802ac98f0ce5396af3daac52c03b56.pdf&quot;&gt;Removing Unwanted Objects from an Image using Image in-painting&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://stanford.edu/class/ee367/Winter2018/li_li_ee367_win18_report.pdf&quot;&gt;Removal of Background People Using Object Detection and Inpainting&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://ijariie.com/AdminUploadPdf/REMOVING_UNWANTED_OBJECTS_FROM_AN_IMAGE_USING_IMAGE_INPAINTING_ijariie1330_volume_1_14_page_443_447.pdf&quot;&gt;REMOVING UNWANTED OBJECTS FROM AN IMAGE USING IMAGE INPAINTING&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.sciencedirect.com/science/article/pii/S1047320315000541&quot;&gt;An efficient forgery detection algorithm for object removal by exemplar-based image inpainting&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.bmva.org/bmvc/2017/papers/paper080/paper080.pdf&quot;&gt;General Deep Image Completion with Lightweight Conditional Generative Adversarial Networks&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Spring Chap. 4]]></title><description><![CDATA[예외 예외의 핵심원칙 모든 예외는 적절하게 복구되던지, 작업을 중단하고 운영자 혹은 개발자에게 통보되야 한다. 예외 종류 체크예외: RuntimeException을 상속받지 않는 Exception 언체크예외: RuntimeException…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/spring4/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/spring4/</guid><pubDate>Fri, 20 Dec 2019 18:19:01 GMT</pubDate><content:encoded>&lt;h2&gt;예외&lt;/h2&gt;
 &lt;h3&gt;예외의 핵심원칙&lt;/h3&gt;
 &lt;p&gt;모든 예외는 적절하게 복구되던지, 작업을 중단하고 운영자 혹은 개발자에게 통보되야 한다.&lt;/p&gt;
