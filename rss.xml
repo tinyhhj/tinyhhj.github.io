@@ -1,4 +1,200 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Gatsby Starter Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 21 Jan 2020 15:34:47 GMT</lastBuildDate><item><title><![CDATA[[algospot]quadtree]]></title><description><![CDATA[QUADTREE 분할정복 분할정복 문제이므로 분할정복 문제를 푸는 solution 함수 input / output 정의 input: 압축 string output: 거꾸로 압축된 string 분할정복을 푸는 solution…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/algospot-quadtree/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/algospot-quadtree/</guid><pubDate>Mon, 20 Jan 2020 12:31:33 GMT</pubDate><content:encoded>&lt;h2&gt;&lt;a href=&quot;https://algospot.com/judge/problem/read/QUADTREE&quot;&gt;QUADTREE&lt;/a&gt;&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Gatsby Starter Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 28 Jan 2020 15:38:05 GMT</lastBuildDate><item><title><![CDATA[[gcj2019-qr1]Foregone Solution]]></title><description><![CDATA[deep-learning-from-scratch chap 1]]></description><link>https://gatsby-starter-blog-demo.netlify.com/deep-learning-from-scratch/index1/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/deep-learning-from-scratch/index1/</guid><pubDate>Tue, 28 Jan 2020 15:32:32 GMT</pubDate><content:encoded>&lt;h2&gt;&lt;a href=&quot;https://github.com/WegraLee/deep-learning-from-scratch&quot;&gt;deep-learning-from-scratch&lt;/a&gt;&lt;/h2&gt;
+&lt;h3&gt;chap 1&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;# numpy
+import numpy as np
+
+x = np.array([1,2,3,4])
+y = np.array([1.,2.,3.,4.])
+
+# element wise
+print(x+y)
+print(x-y)
+print(x/y)
+print(x*y)
+
+# broadcast
+print([1.0,2.0,3.0])
+print(x / 2.0)
+
+# 2d array
+A = np.array([[1,2],[3,4]])
+print(A)
+
+print(A.shape)
+
+print(A.dtype)
+
+B = np.array([[1,2],[3,4]])
+print(A+B)
+print(A*B)
+print(A-B)
+print(A/B)
+
+# broadcast
+print(A*10)
+print(A*np.array([10,20]))
+print(A[0],A[0][0],A[0][1],A[1],A[1][0],A[1][1])
+
+# flatten
+A = np.array([[[1,2],[3,4]],[[1,2],[3,4]]])
+Y = A.flatten()
+print(Y)
+
+# index array access
+print(Y[np.array([0,2,4])])
+
+# return bool array
+print(type(A&amp;gt;2))
+print(A &amp;gt; 2)
+
+print(A[A&amp;gt;2])
+
+
+# matplotlib
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.arange(0,6,0.1)
+y1 = np.sin(x)
+y2 = np.cos(x)
+
+plt.plot(x,y1,label=&amp;quot;sin&amp;quot;)
+plt.plot(x,y2,linestyle=&amp;quot;--&amp;quot;, label=&amp;quot;cos&amp;quot;)
+plt.xlabel(&amp;quot;x&amp;quot;)
+plt.ylabel(&amp;#39;y&amp;#39;)
+plt.title(&amp;quot;sin &amp;amp; cos&amp;quot;)
+plt.legend()
+plt.show()
+
+
+# image
+from matplotlib.image import imread
+
+img = imread(&amp;#39;lena.jpeg&amp;#39;)
+
+plt.imshow(img)
+plt.show()&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[[python]deep-learning-2]]></title><description><![CDATA[deep-learning-from-scratch chap 2]]></description><link>https://gatsby-starter-blog-demo.netlify.com/deep-learning-from-scratch/index2/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/deep-learning-from-scratch/index2/</guid><pubDate>Tue, 28 Jan 2020 15:32:32 GMT</pubDate><content:encoded>&lt;h2&gt;&lt;a href=&quot;https://github.com/WegraLee/deep-learning-from-scratch&quot;&gt;deep-learning-from-scratch&lt;/a&gt;&lt;/h2&gt;
+&lt;h3&gt;chap 2&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;&amp;#39;&amp;#39;&amp;#39;
+# perceptron
+# input : 여러 신호( 전류나 강물처럼 흐름이 있는..)
+# output: 1 or 0 (1: 신호가 흐른다, 0 : 흐르지 않는다)
+# 임계값(theta): 입력신호마다(x1,x2,..xn) 가중치(w1,w2,..wn)을 곱해 임계치를 넘을경우 출력신호(1)을 내보낸다.
+# 가중치는 각 신호가 결과에 주는 영향력을 나타내는 요소( 즉 가중치가 클수록 중요한 신호임을 뜻합니다.)
+
+x1*w1 + x2*w2 + .. xn*wn &amp;lt;= theta (return 0)
+x1*w1 + x2*w2 + .. xn*wn &amp;gt; theta (return 1)
+
+
+논리회로 and 게이트
+x1 x2 y
+0  0  0
+0  1  0
+1  0  0
+1  1  1
+
+퍼셉트론을 이용해 논리 and게이트를 만들 때 w1,w2(각 입력의 가중치)와 임계값(theta)를 정해야 합니다.
+  w1  w2  theta
+(0.5,0.5,0.7)
+(0.5,0.5,0.8)
+...
+and 게이트의 조건을 만족하는 매개변수 조합은 무수히 많습니다.
+
+nand 게이트
+x1 x2 y
+0  0  1
+0  1  1
+1  0  1
+1  1  0
+and 게이트 조건을 만족하는 매개변수들의 부호를 변경하면 모두 만족합니다.
+
+위와 같은 문제일 경우 문제를 해결하는 방식을 생각해보면
+and 게이트의 진리표라는 &amp;#39;학습데이터&amp;#39;를 보면서 알맞은 매개변수의 값을 찾습니다.
+기계학습 문제는 이 매개변수의 값을 컴퓨터가 자동으로 찾도록 하는것을 말합니다.
+학습이란 적절한 매개변수 값을 정하는 행위이며, 사람은 퍼셉트론의 구조(모델)을 고민하고
+컴퓨터에 학습할 데이터를 주는 역할을 합니다.
+
+and , nand ,or 게이트 모두 같은 구조의 퍼셉트론이 역할을 수행할 수 있고, 각 게이트마다 다른점은 매개변수(가중치와 임계값)일 뿐입니다.
+즉 매개변수에 따라서 다양하게 역할을 수행하도록 퍼셉트론을 변경할 수 있습니다.
+&amp;#39;&amp;#39;&amp;#39;
+
+# and gate
+
+def AND(x1,x2):
+    w1,w2,theta = 0.5,0.5,0.7
+    if x1*w1+x2*w2 &amp;lt;= theta:
+        return 0
+    else:
+        return 1
+print(AND(0,0))
+print(AND(0,1))
+print(AND(1,0))
+print(AND(1,1))
+
+&amp;#39;&amp;#39;&amp;#39;
+theta = -b
+b를 편향이라고 부르며
+x1*w1 + x2*w2 + .. xn*wn &amp;lt;= -b (return 0)
+x1*w1 + x2*w2 + .. xn*wn &amp;gt; -b (return 1)
+위 수식을
+b +  x1*w1 + x2*w2 + .. xn*wn &amp;lt;= 0 (return 0)
+b +  x1*w1 + x2*w2 + .. xn*wn &amp;gt; 0 (return 1)
+로 변경이 가능합니다.
+
+편향과 가중치와 차이점에 주의합니다
+가중치: 각 입력신호가 결과에 주는 영향력(중요도)를 조절하는 매개변수
+편향: 뉴런이 얼마나 쉽게 활성화 하느냐 조절하는 매개변수
+&amp;#39;&amp;#39;&amp;#39;
+import numpy as np
+x = np.array([0,1])
+w = np.array([0.5,0.5])
+b = -0.7
+
+print(np.sum(w*x)+ b)
+
+def And(x1,x2):
+    w = np.array([0.5,0.5])
+    b = -0.7
+    x = np.array([x1,x2])
+    tmp = np.sum(w*x)+b
+    if tmp &amp;lt;= 0:
+        return 0
+    else:
+        return 1
+
+def Or(x1,x2):
+    w = np.array([0.5,0.5])
+    b = -0.1
+    x = np.array([x1,x2])
+    tmp = np.sum(w*x)+ b
+    if tmp &amp;lt;= 0:
+        return 0
+    else:
+        return 1
+def Nand(x1,x2):
+    if And(x1,x2) &amp;lt;= 0:
+        return 1
+    else:
+        return 0
+
+
+
+&amp;#39;&amp;#39;&amp;#39;
+퍼셉트론의 한계 
+직선으로만 출력이 표현가능하기 때문에 xor같은 비선형 데이터를 표현할 수 없습니다.
+퍼셉트론을 여러 층으로 쌓으면 xor와 같은 비선형 데이터를 표현할 수 있습니다.
+
+&amp;#39;&amp;#39;&amp;#39;
+def Xor(x1,x2):
+    s1 = Nand(x1,x2)
+    s2 = Or(x1,x2)
+    return And(s1,s2)
+
+print(Xor(0,0))
+print(Xor(0,1))
+print(Xor(1,0))
+print(Xor(1,1))&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[[algospot]quadtree]]></title><description><![CDATA[QUADTREE 분할정복 분할정복 문제이므로 분할정복 문제를 푸는 solution 함수 input / output 정의 input: 압축 string output: 거꾸로 압축된 string 분할정복을 푸는 solution…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/algospot-quadtree/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/algospot-quadtree/</guid><pubDate>Mon, 20 Jan 2020 12:31:33 GMT</pubDate><content:encoded>&lt;h2&gt;&lt;a href=&quot;https://algospot.com/judge/problem/read/QUADTREE&quot;&gt;QUADTREE&lt;/a&gt;&lt;/h2&gt;
 &lt;h3&gt;분할정복&lt;/h3&gt;
 &lt;ol&gt;
 &lt;li&gt;
