@@ -1,4 +1,22 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Gatsby Starter Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 28 Jan 2020 15:38:05 GMT</lastBuildDate><item><title><![CDATA[[gcj2019-qr1]Foregone Solution]]></title><description><![CDATA[deep-learning-from-scratch chap 1]]></description><link>https://gatsby-starter-blog-demo.netlify.com/deep-learning-from-scratch/index1/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/deep-learning-from-scratch/index1/</guid><pubDate>Tue, 28 Jan 2020 15:32:32 GMT</pubDate><content:encoded>&lt;h2&gt;&lt;a href=&quot;https://github.com/WegraLee/deep-learning-from-scratch&quot;&gt;deep-learning-from-scratch&lt;/a&gt;&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Gatsby Starter Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 06 Feb 2020 16:33:23 GMT</lastBuildDate><item><title><![CDATA[No title]]></title><link>https://gatsby-starter-blog-demo.netlify.com/deep-learning-from-scratch/index4/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/deep-learning-from-scratch/index4/</guid><content:encoded></content:encoded></item><item><title><![CDATA[[deeplearning]derivatives]]></title><description><![CDATA[미분 미분을 할때 어렵게 느껴지는 이유는 많은 것을, 한번에 해결하려고 하기 때문입니다. 또한 많은 실수를 야기합니다.
+그래서 다차원 미분을 할때에, 단순한 수식부터 확장해 나가는것이 좋습니다. 벡터미분 $\overrightharpoon{y} = W…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/deep-learning/derivatives/derivatives/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/deep-learning/derivatives/derivatives/</guid><pubDate>Thu, 06 Feb 2020 14:49:11 GMT</pubDate><content:encoded>&lt;h2&gt;미분&lt;/h2&gt;
+&lt;p&gt;미분을 할때 어렵게 느껴지는 이유는 많은 것을, 한번에 해결하려고 하기 때문입니다. 또한 많은 실수를 야기합니다.
+그래서 다차원 미분을 할때에, 단순한 수식부터 확장해 나가는것이 좋습니다.&lt;/p&gt;
+&lt;h3&gt;벡터미분&lt;/h3&gt;
+&lt;p&gt;$\overrightharpoon{y} = W\overrightharpoon{x}$의 벡터 미분일고 각 벡터의 크기는 y(A,1),W(A,B),x(B,1) 일때,&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;스칼라 결과값을 갖는 수식을 작성해봅니다.&lt;br&gt;
+$\frac{\partial \overrightharpoon{y&lt;em&gt;3}}{\partial \overrightharpoon{x&lt;/em&gt;7}}$&lt;br&gt;
+$\sum\limits&lt;em&gt;{j=1}^D W&lt;/em&gt;{\3&lt;em&gt;j}\overrightharpoon{x&lt;/em&gt;j}$&lt;br&gt;
+벡터 수식에서 훨씬 단순한 스칼라 결과값을 갖는 수식으로 변경했습니다.&lt;/li&gt;
+&lt;li&gt;요약 기호들을 삭제합니다.($\sum$, $\prod$)
+미분을 할 때, 수식을 줄여주는 기호들로 인해 실수를 하는 경우가 많습니다. 만약 미분에 익숙하지 않은 경우에 수식을 풀어서 표시하는게 좋습니다.&lt;br&gt;
+$\overrightharpoon{y} = {W&lt;em&gt;31}\overrightharpoon{x&lt;/em&gt;1} + {W&lt;em&gt;32}\overrightharpoon{x&lt;/em&gt;2} + … + {W&lt;em&gt;37}\overrightharpoon{x&lt;/em&gt;7} + … + {W&lt;em&gt;3D}\overrightharpoon{x&lt;/em&gt;D}$&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Reference&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;http://cs231n.stanford.edu/vecDerivs.pdf&quot;&gt;Derivatives&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</content:encoded></item><item><title><![CDATA[[python]deep-learning-1]]></title><description><![CDATA[deep-learning-from-scratch chap 1]]></description><link>https://gatsby-starter-blog-demo.netlify.com/deep-learning-from-scratch/index1/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/deep-learning-from-scratch/index1/</guid><pubDate>Tue, 28 Jan 2020 15:32:32 GMT</pubDate><content:encoded>&lt;h2&gt;&lt;a href=&quot;https://github.com/WegraLee/deep-learning-from-scratch&quot;&gt;deep-learning-from-scratch&lt;/a&gt;&lt;/h2&gt;
 &lt;h3&gt;chap 1&lt;/h3&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;# numpy
 import numpy as np
@@ -194,7 +212,205 @@ def Xor(x1,x2):
 print(Xor(0,0))
 print(Xor(0,1))
 print(Xor(1,0))
-print(Xor(1,1))&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[[algospot]quadtree]]></title><description><![CDATA[QUADTREE 분할정복 분할정복 문제이므로 분할정복 문제를 푸는 solution 함수 input / output 정의 input: 압축 string output: 거꾸로 압축된 string 분할정복을 푸는 solution…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/algospot-quadtree/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/algospot-quadtree/</guid><pubDate>Mon, 20 Jan 2020 12:31:33 GMT</pubDate><content:encoded>&lt;h2&gt;&lt;a href=&quot;https://algospot.com/judge/problem/read/QUADTREE&quot;&gt;QUADTREE&lt;/a&gt;&lt;/h2&gt;
+print(Xor(1,1))&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[[python]deep-learning-3]]></title><description><![CDATA[deep-learning-from-scratch chap 3]]></description><link>https://gatsby-starter-blog-demo.netlify.com/deep-learning-from-scratch/index3/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/deep-learning-from-scratch/index3/</guid><pubDate>Tue, 28 Jan 2020 15:32:32 GMT</pubDate><content:encoded>&lt;h2&gt;&lt;a href=&quot;https://github.com/WegraLee/deep-learning-from-scratch&quot;&gt;deep-learning-from-scratch&lt;/a&gt;&lt;/h2&gt;
+&lt;h3&gt;chap 3&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;&amp;#39;&amp;#39;&amp;#39;
+신경망
+데이터로부터 가중치 매개변수의 적절한 값을 자동으로 학습하는 능력이 신경망의 중요한 성질입니다.
+신경망의 구조
+0.입력층
+1.은닉층
+2.출력층
+
+퍼셉트론의 편향은 입력이 1이고 가중치가 b일 경우의 가중치로 변경이 가능합니다.
+a = b(=w0)*x0 +w1*x1 + .. + wn*xn 으로 표현이 가능합니다.
+y = h(a)
+여기서 h(a)는 활성화 함수라고 하는데 입력의 총합(a)이 활성화(y)를 일으키는지 정하는 역할을 합니다.
+
+퍼셉트론의 경우에 활성화 함수로 계단 함수를 사용하고 있으나 신경망으로 세계에서는 활성화 함수로 다른 함수를 사용하고 있습니다.
+
+시그모이드 함수
+
+&amp;#39;&amp;#39;&amp;#39;
+
+# 계단 함수
+import numpy as np
+import matplotlib.pylab as plt
+
+def step_func(x1):
+    return np.array( x1 &amp;gt;0, dtype=np.int)
+
+x = np.arange(-5., 5.,0.1)
+y = step_func(x)
+plt.plot(x,y)
+plt.ylim(-0.1, 1.1) # 범위
+plt.show()
+
+# sigmoid
+
+def sigmoid(x):
+    # broadcast 이용
+    # scalar 와 np.array 연산 시 해당 크기만큼 scalar값이 확장되어 연산을 수행합니다.
+    return 1 / (1 + np.exp(-x))
+
+xx = np.arange(-5.,5.,0.1)
+yy = sigmoid(xx)
+
+plt.plot(xx,yy)
+plt.ylim(-0.1,1.1)
+plt.show()
+
+# ReLU(Rectified Linear Unit)
+
+def relu(x):
+    return np.maximum(0,x)
+
+# 다차원 배열
+A = np.array([[1,2],[3,4]])
+print(A)
+print(np.ndim(A)) # 차원
+print(A.shape) # 차원의 크기
+
+B = np.array([[4,5],[7,8]])
+print(np.dot(A,B)) # 행렬의 곱 np.dot
+
+C = np.array([[[1],[3]],[[1],[3]],[[1],[3]]])
+print(C.shape)
+
+# 신경망 행렬 곱
+# x * w = y
+
+X = [1,2]
+W = [[1,2,3],[4,5,6]]
+Y = np.dot(X,W)
+print(Y)
+
+# 핵심은 신경망에서의 계산을 행렬 계산으로 정리할 수 있다는 것입니다.
+# 0층 입력층
+# 1층 은닉층
+# 2층 은닉층
+# 3층 출력층
+X = np.array([0.5,1])
+W1 = np.array([[0.1,0.3,0.5],[0.2,0.4,0.6]])
+B1 = np.array([0.1,0.2,0.3])
+print(W1.shape)
+print(X.shape)
+print(B1.shape)
+
+# 0-&amp;gt;1층
+A1 = np.dot(X,W1)+B1
+Z1 = sigmoid(A1)
+print(A1)
+print(Z1)
+
+W2 = np.array([[0.1,0.4],[0.2,0.5],[0.3,0.6]])
+B2 = np.array([0.1,0.2])
+
+print(Z1.shape)
+print(W2.shape)
+print(B2.shape)
+
+# 1-&amp;gt;2층
+A2 = np.dot(Z1,W2) + B2
+Z2 = sigmoid(A2)
+print(A2)
+print(Z2)
+
+# 2-&amp;gt;3층
+# 나머지 구현은 같으나, 활성화 함수만 다릅니다.
+def identify_func(x):
+    return x
+
+W3 = np.array([[0.1,0.3],[0.2,0.4]])
+B3 = np.array([0.1,0.2])
+A3 = np.dot(Z2,W3)+B3
+Z3 = identify_func(A3)
+print(A3)
+print(Z3)
+
+# 중요: 출력층의 활성화 함수는 문제의 성질에 다르게 정합니다
+# 회귀: 항등함수
+# 분류: 시그모이드
+# 다중분류: 소프트 맥스
+
+# 소프트 맥스
+
+a = np.array([0.3, 0.5, 0.7])
+exp_a = np.exp(a)
+sum_exp_a = np.sum(exp_a)
+y = exp_a / sum_exp_a
+print(y)
+
+# softmax의 결과값의 경우 항상 출력 총합이 1 이므로 출력값을 &amp;#39;확률&amp;#39;로 해석할 수 있습니다.
+def softmax(x):
+    # exp는 오버플로우가 발생할 수 있으므로 max값을 빼줍니다.
+    max = np.max(x)
+    exp_x = np.exp(x-max)
+    sum = np.sum(exp_x)
+    # print(max, exp_x, sum)
+    return exp_x / sum
+
+# 기계학습을 학습과 추론 2단계로 나뉩니다
+# 학습: 데이터를 사용해서 &amp;#39;가중치 매개변수&amp;#39;를 학습합니다.
+# 추론: 앞에서 학습한 &amp;#39;가중치 매개변수&amp;#39;를 사용해서 입력데이터를 분류합니다.
+import sys, os
+sys.path.append(os.pardir)
+from download_mnist import load_mnist
+
+(x_train, t_train), (x_test,t_test) = load_mnist(flatten=True, normalize=True)
+
+print(x_train.shape)
+print(t_train.shape)
+print(x_test.shape)
+print(t_test.shape)
+
+# 출력층 뉴런 10개 -&amp;gt; 다중 분류 0-9(10개
+# 은닉 1층 50개 뉴런 / 2층 100 개 뉴런
+# 50 과 100 은 임의의 값
+import pickle
+
+def get_data():
+    (x_train, t_train), (x_test, t_test) = load_mnist(flatten=True, normalize=True)
+    return x_test,t_test
+
+def init_network():
+    with open(&amp;quot;sample_weight.pkl&amp;quot;,&amp;#39;rb&amp;#39;) as f:
+        network = pickle.load(f)
+
+    return network
+
+def predict(network, x):
+    W1,W2,W3 = network[&amp;#39;W1&amp;#39;], network[&amp;#39;W2&amp;#39;],network[&amp;#39;W3&amp;#39;]
+    b1,b2,b3 = network[&amp;#39;b1&amp;#39;],network[&amp;#39;b2&amp;#39;],network[&amp;#39;b3&amp;#39;]
+
+    a1 = np.dot(x,W1)+b1
+    z1 = sigmoid(a1)
+    a2 = np.dot(z1,W2)+b2
+    z2 = sigmoid(a2)
+    a3 = np.dot(z2,W3)+b3
+    y = softmax(a3)
+
+    print(&amp;#39;a1.shape&amp;#39;, a1.shape)
+    print(&amp;#39;z1.shape&amp;#39;, z1.shape)
+    print(&amp;#39;a2.shape&amp;#39;, a2.shape)
+    print(&amp;#39;z2.shape&amp;#39;, z2.shape)
+    print(&amp;#39;a3.shape&amp;#39;, a3.shape)
+    print(&amp;#39;y.shape&amp;#39;, y.shape)
+    return y
+
+x, t = get_data()
+network = init_network()
+
+batch_size = 100
+accuracy_cnt = 0
+for i in range(0,len(x), batch_size):
+    x_batch = x[i:i+batch_size]
+    y_batch = predict(network, x_batch)
+    #y = predict(network, x[i])
+    p = np.argmax(y_batch, axis=1)
+    accuracy_cnt+= np.sum(p == t[i:i+batch_size])
+
+print(&amp;quot;Accuracy: &amp;quot; + str(float(accuracy_cnt) / len(x)))&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[[algospot]quadtree]]></title><description><![CDATA[QUADTREE 분할정복 분할정복 문제이므로 분할정복 문제를 푸는 solution 함수 input / output 정의 input: 압축 string output: 거꾸로 압축된 string 분할정복을 푸는 solution…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/algospot-quadtree/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/algospot-quadtree/</guid><pubDate>Mon, 20 Jan 2020 12:31:33 GMT</pubDate><content:encoded>&lt;h2&gt;&lt;a href=&quot;https://algospot.com/judge/problem/read/QUADTREE&quot;&gt;QUADTREE&lt;/a&gt;&lt;/h2&gt;
 &lt;h3&gt;분할정복&lt;/h3&gt;
 &lt;ol&gt;
 &lt;li&gt;
@@ -889,60 +1105,7 @@ dao의 변경은 sql에 독립적인 dao를 만들기 위해서 sql을 분리시
 &lt;blockquote&gt;
 &lt;p&gt;sql 제공 인터페이스 input: sql key / output: sql
 ß&lt;/p&gt;
-&lt;/blockquote&gt;</content:encoded></item><item><title><![CDATA[[boj]9663]]></title><description><![CDATA[boj9663 backtracking]]></description><link>https://gatsby-starter-blog-demo.netlify.com/boj-9663/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/boj-9663/</guid><pubDate>Sun, 12 Jan 2020 08:53:22 GMT</pubDate><content:encoded>&lt;h1&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/6603&quot;&gt;boj9663&lt;/a&gt;&lt;/h1&gt;
-&lt;h2&gt;backtracking&lt;/h2&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;package boj;
-
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-import java.util.stream.IntStream;
-
-import static java.lang.Math.abs;
-
-public class Boj9663 {
-    boolean[][] board;
-    static boolean[] x;
-    static boolean[] ru;
-    static boolean[] rd;
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(new BufferedReader(new InputStreamReader(System.in)));
-        int n = sc.nextInt();
-        x = new boolean[14];
-        ru = new boolean[27];
-        rd = new boolean[27];
-        System.out.println(putQueen(n,0,n, new boolean[n][n], new ArrayList&amp;lt;&amp;gt;()));
-    }
-
-    //backtracking
-    //input: n, st-index, board
-    //output: int
-    public static int putQueen(int n, int cur, int remain, boolean[][] board, List&amp;lt;Integer&amp;gt; queens) {
-        if( cur &amp;gt;= n &amp;amp;&amp;amp; remain &amp;gt; 0) {
-            return 0;
-        } else if( cur &amp;gt;= n ) {
-            return 1;
-        }
-       // can put?
-        int res = 0;
-        for( int i = 0; i &amp;lt; n ; i++) {
-            if( canPut(cur , i , board, queens)) {
-                x[i] = ru[cur+i] = rd[cur-i+board.length-1] = true;
-                res += putQueen(n,cur+1, remain-1, board, queens);
-                x[i] = ru[cur+i] = rd[cur-i+board.length-1] = false;
-            }
-        }
-        return res;
-
-    }
-
-    private static boolean canPut(int y, int xx, boolean[][] board, List&amp;lt;Integer&amp;gt; queens) {
-        return !x[xx] &amp;amp;&amp;amp; !ru[y+xx] &amp;amp;&amp;amp; !rd[y-xx+board.length-1];
-    }
-}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[[gcj2019-qr2]Foregone Solution]]></title><description><![CDATA[qr2019-2 backtracking]]></description><link>https://gatsby-starter-blog-demo.netlify.com/gcj2019-qr2/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/gcj2019-qr2/</guid><pubDate>Sun, 12 Jan 2020 08:53:22 GMT</pubDate><content:encoded>&lt;h1&gt;&lt;a href=&quot;https://codingcompetitions.withgoogle.com/codejam/round/0000000000051705/00000000000881da&quot;&gt;qr2019-2&lt;/a&gt;&lt;/h1&gt;
+&lt;/blockquote&gt;</content:encoded></item><item><title><![CDATA[[gcj2019-qr2]Foregone Solution]]></title><description><![CDATA[qr2019-2 backtracking]]></description><link>https://gatsby-starter-blog-demo.netlify.com/gcj2019-qr2/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/gcj2019-qr2/</guid><pubDate>Sun, 12 Jan 2020 08:53:22 GMT</pubDate><content:encoded>&lt;h1&gt;&lt;a href=&quot;https://codingcompetitions.withgoogle.com/codejam/round/0000000000051705/00000000000881da&quot;&gt;qr2019-2&lt;/a&gt;&lt;/h1&gt;
 &lt;h2&gt;backtracking&lt;/h2&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;package codejam.qr2019.q2;
 
@@ -1073,6 +1236,59 @@ public class Solution {
 
 
 
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[[boj]9663]]></title><description><![CDATA[boj9663 backtracking]]></description><link>https://gatsby-starter-blog-demo.netlify.com/boj-9663/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/boj-9663/</guid><pubDate>Sun, 12 Jan 2020 08:53:22 GMT</pubDate><content:encoded>&lt;h1&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/6603&quot;&gt;boj9663&lt;/a&gt;&lt;/h1&gt;
+&lt;h2&gt;backtracking&lt;/h2&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;package boj;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import java.util.stream.IntStream;
+
+import static java.lang.Math.abs;
+
+public class Boj9663 {
+    boolean[][] board;
+    static boolean[] x;
+    static boolean[] ru;
+    static boolean[] rd;
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(new BufferedReader(new InputStreamReader(System.in)));
+        int n = sc.nextInt();
+        x = new boolean[14];
+        ru = new boolean[27];
+        rd = new boolean[27];
+        System.out.println(putQueen(n,0,n, new boolean[n][n], new ArrayList&amp;lt;&amp;gt;()));
+    }
+
+    //backtracking
+    //input: n, st-index, board
+    //output: int
+    public static int putQueen(int n, int cur, int remain, boolean[][] board, List&amp;lt;Integer&amp;gt; queens) {
+        if( cur &amp;gt;= n &amp;amp;&amp;amp; remain &amp;gt; 0) {
+            return 0;
+        } else if( cur &amp;gt;= n ) {
+            return 1;
+        }
+       // can put?
+        int res = 0;
+        for( int i = 0; i &amp;lt; n ; i++) {
+            if( canPut(cur , i , board, queens)) {
+                x[i] = ru[cur+i] = rd[cur-i+board.length-1] = true;
+                res += putQueen(n,cur+1, remain-1, board, queens);
+                x[i] = ru[cur+i] = rd[cur-i+board.length-1] = false;
+            }
+        }
+        return res;
+
+    }
+
+    private static boolean canPut(int y, int xx, boolean[][] board, List&amp;lt;Integer&amp;gt; queens) {
+        return !x[xx] &amp;amp;&amp;amp; !ru[y+xx] &amp;amp;&amp;amp; !rd[y-xx+board.length-1];
+    }
 }&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[[boj]6603]]></title><description><![CDATA[로또 조합 생각보다 조합을 구현하는 법이 어렵다고 느꼈다. 순열의 경우에는 더 간단하게 구현이 되었던거 같은데 조합의 경우에는 
 집합의 전체갯수, 뽑는 갯수, 현재 index…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/boj-6603/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/boj-6603/</guid><pubDate>Sat, 11 Jan 2020 08:51:53 GMT</pubDate><content:encoded>&lt;h1&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/6603&quot;&gt;로또&lt;/a&gt;&lt;/h1&gt;
 &lt;h2&gt;조합&lt;/h2&gt;
@@ -1616,7 +1832,54 @@ FactoryBean의 getObject 메소드가 생성해주는 객체가 aaa빈으로 등
 이때 사용되는 포인트컷은 &lt;code class=&quot;language-text&quot;&gt;TransactionAttributeSourcePointcut&lt;/code&gt;이다.&lt;/li&gt;
 &lt;li&gt;대체정책: 클래스 메소드 -&gt; 클래스 -&gt; 인터페이스 메소드 -&gt; 인터페이스 순으로 트랜잭션 속성을 참조한다.&lt;/li&gt;
 &lt;li&gt;@Transactional의 위치는 인터페이스를 사용하는 프록시 방식의 aop가 아닌경우에, 무시될 수 있으므로 &lt;code class=&quot;language-text&quot;&gt;타겟 클래스에 적용&lt;/code&gt;할 것을 권장한다.&lt;/li&gt;
-&lt;/ol&gt;</content:encoded></item><item><title><![CDATA[[algospot]picnic]]></title><description><![CDATA[PICNIC 재귀호출]]></description><link>https://gatsby-starter-blog-demo.netlify.com/algospot-picnic/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/algospot-picnic/</guid><pubDate>Fri, 03 Jan 2020 17:31:38 GMT</pubDate><content:encoded>&lt;h1&gt;&lt;a href=&quot;https://algospot.com/judge/problem/read/PICNIC&quot;&gt;PICNIC&lt;/a&gt;&lt;/h1&gt;
+&lt;/ol&gt;</content:encoded></item><item><title><![CDATA[[boj]1914]]></title><description><![CDATA[하노이 탑 재귀호출]]></description><link>https://gatsby-starter-blog-demo.netlify.com/boj-1914/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/boj-1914/</guid><pubDate>Fri, 03 Jan 2020 17:31:38 GMT</pubDate><content:encoded>&lt;h1&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/1914&quot;&gt;하노이 탑&lt;/a&gt;&lt;/h1&gt;
+&lt;h2&gt;재귀호출&lt;/h2&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;public class Boj1914 {
+    int res;
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+
+        BigInteger res = BigInteger.valueOf(2).pow(n).subtract(BigInteger.ONE);
+        System.out.println(res);
+        if( n &amp;lt;= 20) hanoi(n,1,3);
+    }
+
+    // 문제의 조각 n개의 조각을 1-&amp;gt;3으로 옮기는 문제
+    // 처음 시작하는 판의 갯수 n의 크기에 따라 재귀함수의 크기가 달라진다.
+    // n = 1 1-&amp;gt;3 단순히 옮기면 됨
+    // n = 2 1-&amp;gt;2, 1-&amp;gt;3 , 2-&amp;gt;3
+    // n = 3 1-&amp;gt;3, 1-&amp;gt;2, 3-&amp;gt;2, 1-&amp;gt;3, 2-&amp;gt;1, 2-&amp;gt;3, 1-&amp;gt;3
+    // n = 4 1-&amp;gt;2, 1-&amp;gt;3, 2-&amp;gt;3, 1-&amp;gt;2, 3-&amp;gt;1, 3-&amp;gt;2, 1-&amp;gt;2, 1-&amp;gt;3, 2-&amp;gt;3, 2-&amp;gt;1, 3-&amp;gt;1, 2-&amp;gt;3, 1-&amp;gt;2, 1-&amp;gt;3, 2-&amp;gt;3
+    // n = k 일때 추상적 흐름
+    // k-1개의 원반을 목적지 이외의 기둥에 옮겨놓는다.(구체적으로는 모름)
+    // k 번째 원반을 목적지에 옮겨놓음
+    // k-1개의 원반을 다시 목적지로 옮긴다.( 구체적으로는 모름)
+    // 문제의 조각: n(원판의 갯수), st(시작점), end(목표), 순서기록여부 리턴: 횟수
+    // 기저조건: n = 1 인경우 그냥 옮기면 됨
+    // 문제의 조각 내에 순서를 리턴하게 되면 안됨. 20 이하일때만 리턴하도록 되있기 때문에
+    // 시간 초과가 나므로 캐시를 사용해야하는데 n, st,end에 대해서 순서도를 캐시할거임
+    // 1. 맥스값 오류 - long을 벗어남
+    // 2. 메모리 오버 - 여러 풀이들을 보니 그냥 2^n-1 최소횟수를 리턴하도록 되있음
+
+
+    public static long hanoi(int n , int st, int end ) {
+        if( n == 1) {
+            System.out.println(&amp;quot;&amp;quot;+st +&amp;quot; &amp;quot; + end);
+//            wrapper.add(new int[]{st,end});
+            return 1;
+        }
+
+        long cnt1 = hanoi(n-1, st, 6-st-end);
+        long cnt2 = hanoi(1,st,end);
+        long cnt3 = hanoi(n-1,6-st-end,end);
+
+        return cnt1+cnt2+cnt3;
+    }
+
+
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[[algospot]picnic]]></title><description><![CDATA[PICNIC 재귀호출]]></description><link>https://gatsby-starter-blog-demo.netlify.com/algospot-picnic/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/algospot-picnic/</guid><pubDate>Fri, 03 Jan 2020 17:31:38 GMT</pubDate><content:encoded>&lt;h1&gt;&lt;a href=&quot;https://algospot.com/judge/problem/read/PICNIC&quot;&gt;PICNIC&lt;/a&gt;&lt;/h1&gt;
 &lt;h2&gt;재귀호출&lt;/h2&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;package algospot.picnic;
 
@@ -1676,54 +1939,44 @@ public class Main {
         return res[0];
     }
 
-}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[[boj]1914]]></title><description><![CDATA[하노이 탑 재귀호출]]></description><link>https://gatsby-starter-blog-demo.netlify.com/boj-1914/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/boj-1914/</guid><pubDate>Fri, 03 Jan 2020 17:31:38 GMT</pubDate><content:encoded>&lt;h1&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/1914&quot;&gt;하노이 탑&lt;/a&gt;&lt;/h1&gt;
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[[boj]1074]]></title><description><![CDATA[Z 재귀호출 문제: z로 탐색할 때, n,r,c가 주어졌을 때 순서를 리턴
+문제의 조각: nrc가 주어졌을때 순서를 리턴
+기저조건 : n이 0인경우는 무조건 순서가 1
+그 외 : 1 2 3 4 구역 나누기
+1구역이라면 1구역 내에서 순서 리턴…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/boj-1074/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/boj-1074/</guid><pubDate>Tue, 31 Dec 2019 17:31:38 GMT</pubDate><content:encoded>&lt;h1&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/1074&quot;&gt;Z&lt;/a&gt;&lt;/h1&gt;
 &lt;h2&gt;재귀호출&lt;/h2&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;public class Boj1914 {
-    int res;
-
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-
-        BigInteger res = BigInteger.valueOf(2).pow(n).subtract(BigInteger.ONE);
-        System.out.println(res);
-        if( n &amp;lt;= 20) hanoi(n,1,3);
-    }
-
-    // 문제의 조각 n개의 조각을 1-&amp;gt;3으로 옮기는 문제
-    // 처음 시작하는 판의 갯수 n의 크기에 따라 재귀함수의 크기가 달라진다.
-    // n = 1 1-&amp;gt;3 단순히 옮기면 됨
-    // n = 2 1-&amp;gt;2, 1-&amp;gt;3 , 2-&amp;gt;3
-    // n = 3 1-&amp;gt;3, 1-&amp;gt;2, 3-&amp;gt;2, 1-&amp;gt;3, 2-&amp;gt;1, 2-&amp;gt;3, 1-&amp;gt;3
-    // n = 4 1-&amp;gt;2, 1-&amp;gt;3, 2-&amp;gt;3, 1-&amp;gt;2, 3-&amp;gt;1, 3-&amp;gt;2, 1-&amp;gt;2, 1-&amp;gt;3, 2-&amp;gt;3, 2-&amp;gt;1, 3-&amp;gt;1, 2-&amp;gt;3, 1-&amp;gt;2, 1-&amp;gt;3, 2-&amp;gt;3
-    // n = k 일때 추상적 흐름
-    // k-1개의 원반을 목적지 이외의 기둥에 옮겨놓는다.(구체적으로는 모름)
-    // k 번째 원반을 목적지에 옮겨놓음
-    // k-1개의 원반을 다시 목적지로 옮긴다.( 구체적으로는 모름)
-    // 문제의 조각: n(원판의 갯수), st(시작점), end(목표), 순서기록여부 리턴: 횟수
-    // 기저조건: n = 1 인경우 그냥 옮기면 됨
-    // 문제의 조각 내에 순서를 리턴하게 되면 안됨. 20 이하일때만 리턴하도록 되있기 때문에
-    // 시간 초과가 나므로 캐시를 사용해야하는데 n, st,end에 대해서 순서도를 캐시할거임
-    // 1. 맥스값 오류 - long을 벗어남
-    // 2. 메모리 오버 - 여러 풀이들을 보니 그냥 2^n-1 최소횟수를 리턴하도록 되있음
-
-
-    public static long hanoi(int n , int st, int end ) {
-        if( n == 1) {
-            System.out.println(&amp;quot;&amp;quot;+st +&amp;quot; &amp;quot; + end);
-//            wrapper.add(new int[]{st,end});
+&lt;blockquote&gt;
+&lt;p&gt;문제: z로 탐색할 때, n,r,c가 주어졌을 때 순서를 리턴
+문제의 조각: nrc가 주어졌을때 순서를 리턴
+기저조건 : n이 0인경우는 무조건 순서가 1
+그 외 : 1 2 3 4 구역 나누기
+1구역이라면 1구역 내에서 순서 리턴
+2구역이라면 1구역 갯수 + 2구역 내에서 순서 리턴
+3구역이라면 2구역 까지 갯수 + 3구역 내에서 순서
+4구역이라면 3구역 까지 갯수 + 4구역 내에서 순서&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;static int getZOrder(int n , int r , int c) {
+        if( n == 0) {
             return 1;
         }
-
-        long cnt1 = hanoi(n-1, st, 6-st-end);
-        long cnt2 = hanoi(1,st,end);
-        long cnt3 = hanoi(n-1,6-st-end,end);
-
-        return cnt1+cnt2+cnt3;
-    }
-
-
-}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[[algospot]boggle]]></title><description><![CDATA[BOGGLE 재귀호출]]></description><link>https://gatsby-starter-blog-demo.netlify.com/algospot-boggle/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/algospot-boggle/</guid><pubDate>Tue, 31 Dec 2019 17:31:38 GMT</pubDate><content:encoded>&lt;h1&gt;&lt;a href=&quot;https://algospot.com/judge/problem/read/BOGGLE&quot;&gt;BOGGLE&lt;/a&gt;&lt;/h1&gt;
+        int num = 1 &amp;lt;&amp;lt; n-1;
+        //1
+        if( num &amp;gt; r &amp;amp;&amp;amp; num &amp;gt; c) {
+           return getZOrder(n-1, r,c);
+        }
+        //2
+        else if( num &amp;gt; r &amp;amp;&amp;amp; num &amp;lt;= c) {
+            return (num *num) + getZOrder(n-1, r, c- num);
+        }
+        //3
+        else if( num &amp;lt;= r &amp;amp;&amp;amp; num &amp;gt; c) {
+            return (num *num * 2) + getZOrder(n-1,r-num , c);
+        }
+        //4
+        else {
+            return (num *num * 3) + getZOrder(n-1, r-num, c-num);
+        }
+    }&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[[algospot]boggle]]></title><description><![CDATA[BOGGLE 재귀호출]]></description><link>https://gatsby-starter-blog-demo.netlify.com/algospot-boggle/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/algospot-boggle/</guid><pubDate>Tue, 31 Dec 2019 17:31:38 GMT</pubDate><content:encoded>&lt;h1&gt;&lt;a href=&quot;https://algospot.com/judge/problem/read/BOGGLE&quot;&gt;BOGGLE&lt;/a&gt;&lt;/h1&gt;
 &lt;h2&gt;재귀호출&lt;/h2&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;package algospot.boggle;
 
@@ -1811,44 +2064,7 @@ public class Main {
 
         return false;
     }
-}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[[boj]1074]]></title><description><![CDATA[Z 재귀호출 문제: z로 탐색할 때, n,r,c가 주어졌을 때 순서를 리턴
-문제의 조각: nrc가 주어졌을때 순서를 리턴
-기저조건 : n이 0인경우는 무조건 순서가 1
-그 외 : 1 2 3 4 구역 나누기
-1구역이라면 1구역 내에서 순서 리턴…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/boj-1074/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/boj-1074/</guid><pubDate>Tue, 31 Dec 2019 17:31:38 GMT</pubDate><content:encoded>&lt;h1&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/1074&quot;&gt;Z&lt;/a&gt;&lt;/h1&gt;
-&lt;h2&gt;재귀호출&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;문제: z로 탐색할 때, n,r,c가 주어졌을 때 순서를 리턴
-문제의 조각: nrc가 주어졌을때 순서를 리턴
-기저조건 : n이 0인경우는 무조건 순서가 1
-그 외 : 1 2 3 4 구역 나누기
-1구역이라면 1구역 내에서 순서 리턴
-2구역이라면 1구역 갯수 + 2구역 내에서 순서 리턴
-3구역이라면 2구역 까지 갯수 + 3구역 내에서 순서
-4구역이라면 3구역 까지 갯수 + 4구역 내에서 순서&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;static int getZOrder(int n , int r , int c) {
-        if( n == 0) {
-            return 1;
-        }
-        int num = 1 &amp;lt;&amp;lt; n-1;
-        //1
-        if( num &amp;gt; r &amp;amp;&amp;amp; num &amp;gt; c) {
-           return getZOrder(n-1, r,c);
-        }
-        //2
-        else if( num &amp;gt; r &amp;amp;&amp;amp; num &amp;lt;= c) {
-            return (num *num) + getZOrder(n-1, r, c- num);
-        }
-        //3
-        else if( num &amp;lt;= r &amp;amp;&amp;amp; num &amp;gt; c) {
-            return (num *num * 2) + getZOrder(n-1,r-num , c);
-        }
-        //4
-        else {
-            return (num *num * 3) + getZOrder(n-1, r-num, c-num);
-        }
-    }&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[Spring Chap. 2]]></title><description><![CDATA[…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/spring2/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/spring2/</guid><pubDate>Thu, 26 Dec 2019 17:31:38 GMT</pubDate><content:encoded>&lt;h1&gt;2장&lt;/h1&gt;
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[Spring Chap. 2]]></title><description><![CDATA[…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/spring2/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/spring2/</guid><pubDate>Thu, 26 Dec 2019 17:31:38 GMT</pubDate><content:encoded>&lt;h1&gt;2장&lt;/h1&gt;
 &lt;p&gt;테스트&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;단위 테스트를 이용해서 기존의 코드가 정상 동작하는것을 확신할 수 있고, 테스트하고자 하는 기능에 집중해 테스트 할 수 있으므로, 장애 대응이 용이하다.
 단위 테스트를 이용하면 많은 수의 테스트 케이스를 일일이 수행하는 작업과 결과값을 검증하는 작업을 자동화할 수 있다.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
