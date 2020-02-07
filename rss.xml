@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Gatsby Starter Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 06 Feb 2020 16:51:29 GMT</lastBuildDate><item><title><![CDATA[No title]]></title><link>https://gatsby-starter-blog-demo.netlify.com/deep-learning-from-scratch/index4/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/deep-learning-from-scratch/index4/</guid><content:encoded></content:encoded></item><item><title><![CDATA[[deeplearning]derivatives]]></title><description><![CDATA[미분 미분을 할때 어렵게 느껴지는 이유는 많은 것을, 한번에 해결하려고 하기 때문입니다. 또한 많은 실수를 야기합니다.
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Gatsby Starter Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 07 Feb 2020 15:48:46 GMT</lastBuildDate><item><title><![CDATA[No title]]></title><link>https://gatsby-starter-blog-demo.netlify.com/deep-learning-from-scratch/index4/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/deep-learning-from-scratch/index4/</guid><content:encoded></content:encoded></item><item><title><![CDATA[[deeplearning]derivatives]]></title><description><![CDATA[미분 미분을 할때 어렵게 느껴지는 이유는 많은 것을, 한번에 해결하려고 하기 때문입니다. 또한 많은 실수를 야기합니다.
 그래서 다차원 미분을 할때에, 단순한 수식부터 확장해 나가는것이 좋습니다. 벡터미분 $\overrightharpoon{y} = W…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/deep-learning/derivatives/derivatives/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/deep-learning/derivatives/derivatives/</guid><pubDate>Thu, 06 Feb 2020 14:49:11 GMT</pubDate><content:encoded>&lt;h2&gt;미분&lt;/h2&gt;
 &lt;p&gt;미분을 할때 어렵게 느껴지는 이유는 많은 것을, 한번에 해결하려고 하기 때문입니다. 또한 많은 실수를 야기합니다.
 그래서 다차원 미분을 할때에, 단순한 수식부터 확장해 나가는것이 좋습니다.&lt;/p&gt;
@@ -14,6 +14,38 @@ $\sum\limits&lt;em&gt;{j=1}^D W&lt;/em&gt;{\3&lt;em&gt;j}\overrightharpoon{x&lt;
 $\overrightharpoon{y} = {W&lt;em&gt;31}\overrightharpoon{x&lt;/em&gt;1} + {W&lt;em&gt;32}\overrightharpoon{x&lt;/em&gt;2} + … + {W&lt;em&gt;37}\overrightharpoon{x&lt;/em&gt;7} + … + {W&lt;em&gt;3D}\overrightharpoon{x&lt;/em&gt;D}$&lt;/li&gt;
 &lt;li&gt;미분을 합니다.
 위 수식을 $\overrightharpoon{x&lt;em&gt;7}$으로 미분할 경우, \frac{\partial \overrightharpoon{y&lt;/em&gt;3}}{\partial \overrightharpoon{x&lt;em&gt;7}} = ${W&lt;/em&gt;37}$&lt;/li&gt;
+&lt;li&gt;즉 미분결과는 W가 됨을 알 수 있습니다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;벡터를 행렬로 미분&lt;/h3&gt;
+&lt;p&gt;벡터의 각 차원을 행렬을 순회하면서 미분값을 구해야 하므로 3중 for문을 도는것과 같이 자연스럽게 결과는 3차원 벡터라고 생각할 수 있습니다.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;스칼라 결과값을 갖는 수식을 작성합니다.
+y3 = x&lt;em&gt;W78 = x1&lt;/em&gt;W13 + x2&lt;em&gt;W23 + … + xD&lt;/em&gt;WD3&lt;br&gt;
+즉, W78은 y3에 관여를 안하므로 0이 됩니다. 행렬 곱셈을 생각해봤을 때, y의 index와 W의 열 index가 같을경우에만 미분값이 존재한다는 것을 알 수 있습니다.
+그럼 y3을 Wi3으로 미분값을 구하면 y3 = x1&lt;em&gt;W13 + x2&lt;/em&gt;W23 + .. + xD*WD3이 되므로 xi가 됩니다.&lt;br&gt;
+즉 Fijk = dyi/dWjk = dyi/dWji = xj가 됨을 확인 할 수 있습니다. 즉 y차원별 하나의 열벡터만이 미분 값을 가지므로, 2차원으로 압축해서
+Gij = Fiji로 표현할 수 있습니다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;행렬을 행렬로 미분&lt;/h3&gt;
+&lt;p&gt;입력이 배치인경우에&lt;br&gt;
+Y = X*W로 표현이 가능합니다.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;스칼라 결과값을 갖는 수식을 작성합니다.
+Y13에 영향을 줄 수 있는 입력값은 X1k*Wk3입니다.&lt;/li&gt;
+&lt;li&gt;수식을 풀어서 적습니다.
+Y13 = X1k&lt;em&gt;Wk3 = X11&lt;/em&gt;W13 + X12&lt;em&gt;W23 + .. X1M&lt;/em&gt;WM3&lt;/li&gt;
+&lt;li&gt;Y의 row index는 X의 row index와 같고 column index는 W의 column index와 같으므로, dYij/dXik = Wkj 와 같습니다.&lt;/li&gt;
+&lt;li&gt;3번 식을 general하게 풀어보면 Yi:를 i행이라고할 때, dYi:/dXi: = W라는 식을 얻을 수 있습니다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;합성함수의 미분&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;합성함수의 경우 각 연산의 미분의 곱과 같습니다.&lt;/li&gt;
+&lt;li&gt;y = VWx라고 할 경우 VW = U를 이용하여 dy/dx = U를 쉽게 구할 수 있습니다.&lt;/li&gt;
+&lt;li&gt;합성함수의 연쇄법칙으로 구해보면 Wx = m, y = Vm 처럼 중간 값 m을 이용하여 dy/dm * dm/dx로 dy/dx를 구할 수 있습니다.&lt;/li&gt;
+&lt;li&gt;dy/dx를 스칼라값으로 수식을 단순하게 작성해보면 dyi/dm * dm/dxj = dyi/dxj, 여기서 dxj(어떤 j라도)가 변할경우 m벡터 전체에 영향을 전파합니다.&lt;br&gt;
+mi = Wix1 + Wix2 + .. Wi+xn 이므로&lt;/li&gt;
+&lt;li&gt;즉 모든 m의 차원에 대해서 미분 값을 더해야하기때문에 k=1~M dyi/dmk * dmk/dxj 를 구해야합니다.&lt;/li&gt;
+&lt;li&gt;dyi/dmk = Vik이고 dmk/dxj = Wkj이기 때문에 k=1~M Vik * Wkj 즉 VW=U가 미분값이 됩니다. &lt;/li&gt;
 &lt;/ol&gt;
 &lt;h2&gt;Reference&lt;/h2&gt;
 &lt;ol&gt;
