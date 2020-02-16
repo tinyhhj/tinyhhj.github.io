@@ -1,4 +1,88 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Gatsby Starter Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 07 Feb 2020 15:48:46 GMT</lastBuildDate><item><title><![CDATA[No title]]></title><link>https://gatsby-starter-blog-demo.netlify.com/deep-learning-from-scratch/index4/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/deep-learning-from-scratch/index4/</guid><content:encoded></content:encoded></item><item><title><![CDATA[[deeplearning]derivatives]]></title><description><![CDATA[미분 미분을 할때 어렵게 느껴지는 이유는 많은 것을, 한번에 해결하려고 하기 때문입니다. 또한 많은 실수를 야기합니다.
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Gatsby Starter Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://gatsby-starter-blog-demo.netlify.com</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 16 Feb 2020 17:26:03 GMT</lastBuildDate><item><title><![CDATA[No title]]></title><link>https://gatsby-starter-blog-demo.netlify.com/deep-learning-from-scratch/index4/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/deep-learning-from-scratch/index4/</guid><content:encoded></content:encoded></item><item><title><![CDATA[[python]star argument]]></title><description><![CDATA[star argument 간혹 함수 형식을 보면 덜렁 (*)만 있는 경우를 볼 수 있는데, 무슨 뜻인지 궁금해서 찾아보았습니다. keyword-only 변수를 편하게 사용하기 위해서 고안된 듯 싶습니다. 기존에도 **kwargs와 *args…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/python/star-args/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/python/star-args/</guid><pubDate>Sun, 16 Feb 2020 15:29:48 GMT</pubDate><content:encoded>&lt;h2&gt;star argument&lt;/h2&gt;
+&lt;p&gt;간혹 함수 형식을 보면 덜렁 (*)만 있는 경우를 볼 수 있는데, 무슨 뜻인지 궁금해서 찾아보았습니다.&lt;br&gt;
+keyword-only 변수를 편하게 사용하기 위해서 고안된 듯 싶습니다. 기존에도 **kwargs와 *args를 함께사용하여 가변변수와 키워드 변수를 함께 사용할 수 있었지만, 키워드 변수를 함수 내부에서 해체해야하는 번거로움이 존재했습니다.(&lt;code class=&quot;language-text&quot;&gt;이전에는 가변 변수 이후에 단독으로 키워드 변수가 존재할 수 없었다는 듯이 써있습니다.&lt;/code&gt;)  &lt;/p&gt;
+&lt;h3&gt;변경&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;가변 변수 이후에 단독으로 키워드 변수가 존재할 수 있습니다.&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;일반 변수와 키워드 변수를 구분하기 위해 경계선(&lt;em&gt;)를 사용할 수 있습니다.
+def func(a,b,&lt;/em&gt;,key=‘key’):
+pass&lt;/p&gt;
+&lt;h1&gt;ok&lt;/h1&gt;
+&lt;p&gt;func(‘aa’,‘bb’)&lt;/p&gt;
+&lt;h1&gt;ok&lt;/h1&gt;
+&lt;p&gt;func(‘aa’,‘aa’,key=‘dd’)&lt;/p&gt;
+&lt;h1&gt;error positional argument only 2&lt;/h1&gt;
+&lt;p&gt;func(‘aa’,‘bb’,‘cc’,key=‘ddd’)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;reference&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://stackoverflow.com/questions/53797057/star-as-an-argument-in-python-function&quot;&gt;stackoverflow&lt;/a&gt;
+&lt;a href=&quot;https://www.python.org/dev/peps/pep-3102/&quot;&gt;PEP 3102&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[[deeplearning]image-recovery]]></title><description><![CDATA[Image-recovery 이 내용은 펭귄브로의 3분 딥러닝, 파이토치맛의 3장 내용을 복습한 예제입니다. 문제 weired_function을 통해 나온 손상된 이미지를 원래대로 복구할 수 있는 방법? 일반적 접근 weired_function…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/deep-learning/blank-review/image-recovery/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/deep-learning/blank-review/image-recovery/</guid><pubDate>Sun, 16 Feb 2020 15:29:48 GMT</pubDate><content:encoded>&lt;h2&gt;Image-recovery&lt;/h2&gt;
+&lt;p&gt;이 내용은 &lt;a href=&quot;http://www.hanbit.co.kr/store/books/look.php?p_code=B7193109877&quot;&gt;펭귄브로의 3분 딥러닝, 파이토치맛&lt;/a&gt;의 3장 내용을 복습한 예제입니다.&lt;/p&gt;
+&lt;h3&gt;문제&lt;/h3&gt;
+&lt;p&gt;weired_function을 통해 나온 손상된 이미지를 원래대로 복구할 수 있는 방법?&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;일반적 접근&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;weired_function 원리 이해&lt;/li&gt;
+&lt;li&gt;weired_function를 복구할 수 있는 함수 작성&lt;/li&gt;
+&lt;li&gt;이미지 복구&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;머신러닝 접근&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;손상된 이미지와 같은 사이즈의 랜덤 이미지를 weired_function에 입력&lt;/li&gt;
+&lt;li&gt;1.의 출력된 결과와 손상된 이미지 차이 비교 &lt;/li&gt;
+&lt;li&gt;손상된 이미지와 같게끔 랜덤 이미지 입력값 조정 &lt;/li&gt;
+&lt;li&gt;최종적으로 손상된 이미지가 나온 랜덤 이미지를 찾았다면 이미지 복구&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;import torch
+import pickle
+import matplotlib.pyplot as plt
+
+def weird_function(x, n_iter=5):
+    h = x
+    filt = torch.tensor([-1./3, 1./3, -1./3])
+    for ii in range(n_iter):
+        zero_tensor = torch.tensor([1.0*0])
+        h_l = torch.cat( (zero_tensor, h[:-1]), 0)
+        h_r = torch.cat((h[1:], zero_tensor), 0 )
+        h = filt[0] * h + filt[2] * h_l + filt[1] * h_r
+        if ii % 2 == 0:
+            h = torch.cat( (h[h.shape[0]//2:],h[:h.shape[0]//2]), 0  )
+    return h
+
+# image load
+broken_image = torch.FloatTensor(pickle.load(open(&amp;#39;./broken_image_t.p&amp;#39;,&amp;#39;rb&amp;#39;),encoding=&amp;#39;latin1&amp;#39;))
+# image show
+plt.imshow(broken_image.view(100,-1))
+plt.show()
+
+random_image = torch.randn(10000,requires_grad=True)
+learning_rate = 0.8
+print(&amp;#39;learning rate: {}&amp;#39;.format(learning_rate))
+for i in range(20000):
+    # auto grad를 아직 잘 이해못한듯..
+
+    random_image.requires_grad_(True)
+    # process weired
+    result_image = weird_function(random_image)
+    # calc loss
+    loss = torch.dist(result_image,broken_image,2)
+    loss.backward()
+    # rearrange random image
+    with torch.no_grad():
+        random_image = random_image - learning_rate * random_image.grad
+
+    if(i % 1000 == 0):
+        print(&amp;#39;loss: {}&amp;#39;.format(loss))
+plt.imshow(random_image.view(100,-1))
+plt.show()&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[[deeplearning]derivatives]]></title><description><![CDATA[미분 미분을 할때 어렵게 느껴지는 이유는 많은 것을, 한번에 해결하려고 하기 때문입니다. 또한 많은 실수를 야기합니다.
 그래서 다차원 미분을 할때에, 단순한 수식부터 확장해 나가는것이 좋습니다. 벡터미분 $\overrightharpoon{y} = W…]]></description><link>https://gatsby-starter-blog-demo.netlify.com/deep-learning/derivatives/derivatives/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/deep-learning/derivatives/derivatives/</guid><pubDate>Thu, 06 Feb 2020 14:49:11 GMT</pubDate><content:encoded>&lt;h2&gt;미분&lt;/h2&gt;
 &lt;p&gt;미분을 할때 어렵게 느껴지는 이유는 많은 것을, 한번에 해결하려고 하기 때문입니다. 또한 많은 실수를 야기합니다.
 그래서 다차원 미분을 할때에, 단순한 수식부터 확장해 나가는것이 좋습니다.&lt;/p&gt;
@@ -47,7 +131,7 @@ mi = Wix1 + Wix2 + .. Wi+xn 이므로&lt;/li&gt;
 &lt;li&gt;즉 모든 m의 차원에 대해서 미분 값을 더해야하기때문에 k=1~M dyi/dmk * dmk/dxj 를 구해야합니다.&lt;/li&gt;
 &lt;li&gt;dyi/dmk = Vik이고 dmk/dxj = Wkj이기 때문에 k=1~M Vik * Wkj 즉 VW=U가 미분값이 됩니다. &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2&gt;Reference&lt;/h2&gt;
+&lt;h3&gt;Reference&lt;/h3&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&quot;http://cs231n.stanford.edu/vecDerivs.pdf&quot;&gt;Derivatives&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;</content:encoded></item><item><title><![CDATA[[python]deep-learning-1]]></title><description><![CDATA[deep-learning-from-scratch chap 1]]></description><link>https://gatsby-starter-blog-demo.netlify.com/deep-learning-from-scratch/index1/</link><guid isPermaLink="false">https://gatsby-starter-blog-demo.netlify.com/deep-learning-from-scratch/index1/</guid><pubDate>Tue, 28 Jan 2020 15:32:32 GMT</pubDate><content:encoded>&lt;h2&gt;&lt;a href=&quot;https://github.com/WegraLee/deep-learning-from-scratch&quot;&gt;deep-learning-from-scratch&lt;/a&gt;&lt;/h2&gt;
