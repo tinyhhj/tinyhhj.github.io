@@ -5,15 +5,15 @@ keyword-only 변수를 편하게 사용하기 위해서 고안된 듯 싶습니�
 <ol>
 <li>가변 변수 이후에 단독으로 키워드 변수가 존재할 수 있습니다.</li>
 <li>
-<p>일반 변수와 키워드 변수를 구분하기 위해 경계선(<em>)를 사용할 수 있습니다.
-def func(a,b,</em>,key=‘key’):
-pass</p>
-<h1>ok</h1>
-<p>func(‘aa’,‘bb’)</p>
-<h1>ok</h1>
-<p>func(‘aa’,‘aa’,key=‘dd’)</p>
-<h1>error positional argument only 2</h1>
-<p>func(‘aa’,‘bb’,‘cc’,key=‘ddd’)</p>
+<p>일반 변수와 키워드 변수를 구분하기 위해 경계선(*)를 사용할 수 있습니다. </p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">def func(a,b,*,key=&#39;key&#39;):
+pass
+#ok
+func(&#39;aa&#39;,&#39;bb&#39;)
+#ok
+func(&#39;aa&#39;,&#39;aa&#39;,key=&#39;dd&#39;)
+#error positional argument only 2
+func(&#39;aa&#39;,&#39;bb&#39;,&#39;cc&#39;,key=&#39;ddd&#39;)</code></pre></div>
 </li>
 </ol>
 <h3>reference</h3>
@@ -22,4 +22,4 @@ pass</p>
 /static/4f27694bd7811d13157e5e488ad64f43/66c95/profile-pic.jpg 1.5x,
 /static/4f27694bd7811d13157e5e488ad64f43/aacbd/profile-pic.jpg 2x" /><img loading="lazy" width="50" height="50" srcset="/static/4f27694bd7811d13157e5e488ad64f43/30d3a/profile-pic.jpg 1x,
 /static/4f27694bd7811d13157e5e488ad64f43/66c95/profile-pic.jpg 1.5x,
-/static/4f27694bd7811d13157e5e488ad64f43/aacbd/profile-pic.jpg 2x" src="/static/4f27694bd7811d13157e5e488ad64f43/30d3a/profile-pic.jpg" alt="Kyle Mathews" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div><p>Written by <strong>Kyle Mathews</strong> who lives and works in San Francisco building useful things.<!-- --> <a href="https://twitter.com/kylemathews">You should follow him on Twitter</a></p></div></footer></article><nav><ul style="display:flex;flex-wrap:wrap;justify-content:space-between;list-style:none;padding:0"><li><a rel="prev" href="/deep-learning/blank-review/image-recovery/">← <!-- -->[deeplearning]image-recovery</a></li><li><a rel="next" href="/deep-learning-from-scratch/index4/"> →</a></li></ul></nav></main><footer>© <!-- -->2020<!-- -->, Built with<!-- --> <a href="https://www.gatsbyjs.org">Gatsby</a></footer></div></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/python/star-args/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"app":["/app-cf3f3d1115a968fdd10e.js"],"component---node-modules-gatsby-plugin-offline-app-shell-js":["/component---node-modules-gatsby-plugin-offline-app-shell-js-fc6274426e5b89c8fb9c.js"],"component---src-templates-blog-post-js":["/component---src-templates-blog-post-js-f5d54bd78257ddf91162.js"],"component---src-pages-404-js":["/component---src-pages-404-js-c4e21bec9f8bea5f494e.js"],"component---src-pages-index-js":["/component---src-pages-index-js-150346ec4038d88dd771.js"]};/*]]>*/</script><script src="/webpack-runtime-b304bf29917fa6c599be.js" async=""></script><script src="/styles-47650936bd9d421e990d.js" async=""></script><script src="/app-cf3f3d1115a968fdd10e.js" async=""></script><script src="/commons-b7af4b96b646a80f43ad.js" async=""></script><script src="/component---src-templates-blog-post-js-f5d54bd78257ddf91162.js" async=""></script></body></html>
+/static/4f27694bd7811d13157e5e488ad64f43/aacbd/profile-pic.jpg 2x" src="/static/4f27694bd7811d13157e5e488ad64f43/30d3a/profile-pic.jpg" alt="Kyle Mathews" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div><p>Written by <strong>Kyle Mathews</strong> who lives and works in San Francisco building useful things.<!-- --> <a href="https://twitter.com/kylemathews">You should follow him on Twitter</a></p></div></footer></article><nav><ul style="display:flex;flex-wrap:wrap;justify-content:space-between;list-style:none;padding:0"><li><a rel="prev" href="/deep-learning/derivatives/derivatives/">← <!-- -->[deeplearning]derivatives</a></li><li><a rel="next" href="/deep-learning/blank-review/image-recovery/">[deeplearning]image-recovery<!-- --> →</a></li></ul></nav></main><footer>© <!-- -->2020<!-- -->, Built with<!-- --> <a href="https://www.gatsbyjs.org">Gatsby</a></footer></div></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/python/star-args/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"app":["/app-cf3f3d1115a968fdd10e.js"],"component---node-modules-gatsby-plugin-offline-app-shell-js":["/component---node-modules-gatsby-plugin-offline-app-shell-js-fc6274426e5b89c8fb9c.js"],"component---src-templates-blog-post-js":["/component---src-templates-blog-post-js-f5d54bd78257ddf91162.js"],"component---src-pages-404-js":["/component---src-pages-404-js-c4e21bec9f8bea5f494e.js"],"component---src-pages-index-js":["/component---src-pages-index-js-150346ec4038d88dd771.js"]};/*]]>*/</script><script src="/webpack-runtime-b304bf29917fa6c599be.js" async=""></script><script src="/styles-47650936bd9d421e990d.js" async=""></script><script src="/app-cf3f3d1115a968fdd10e.js" async=""></script><script src="/commons-b7af4b96b646a80f43ad.js" async=""></script><script src="/component---src-templates-blog-post-js-f5d54bd78257ddf91162.js" async=""></script></body></html>
