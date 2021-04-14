@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[7],{ndWO:function(e,t,n){"use strict";n.r(t);var l=n("q1tI"),a=n.n(l),s=n("TJpk"),c=n("Bl7J");t.default=function(){return a.a.createElement(c.a,{location:"/fe/teams",title:"tinyhhj blog"},a.a.createElement(s.Helmet,null,a.a.createElement("link",{href:"/fe/teams/style.css",rel:"stylesheet"})))}}}]);
-//# sourceMappingURL=component---src-pages-fe-tesmplate-jsx-9457e993e43015089762.js.map

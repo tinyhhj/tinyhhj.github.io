@@ -1,0 +1,2 @@
+(self.webpackChunkgatsby_starter_blog=self.webpackChunkgatsby_starter_blog||[]).push([[830],{122:function(e,t,l){"use strict";l.r(t);var s=l(7294),a=l(5414),n=l(7198);t.default=function(){return s.createElement(n.Z,{location:"/fe/teams",title:"tinyhhj blog"},s.createElement(a.q,null,s.createElement("link",{href:"/fe/teams/style.css",rel:"stylesheet"})))}}}]);
+//# sourceMappingURL=component---src-pages-fe-template-jsx-627df59609ea4dcd569b.js.map
