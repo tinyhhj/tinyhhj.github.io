@@ -1,4 +1,140 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[tinyhhj Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://gatsbystarterblogsource.gatsbyjs.io</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 14 Apr 2021 17:48:51 GMT</lastBuildDate><item><title><![CDATA[[cleancode]2장 의미있는 이름]]></title><description><![CDATA[2장 의미있는 이름 생각을 해보면 프로그램을 작성하면서 빼놓을 수 없는것이 클래스, 메소드, 변수, 패키지, 프로젝트 등.. 이름을 명명하는 일이 빈번하다. 내 경우를 되돌아본다면 아주 작은 로직을 짤때도 작게는 변수가 3개에서 많게는 1…]]></description><link>https://gatsbystarterblogsource.gatsbyjs.io/books/cleancode/[cleancode]2장/</link><guid isPermaLink="false">https://gatsbystarterblogsource.gatsbyjs.io/books/cleancode/[cleancode]2장/</guid><pubDate>Wed, 14 Apr 2021 10:54:31 GMT</pubDate><content:encoded>&lt;h2&gt;2장 의미있는 이름&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[tinyhhj Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do.]]></description><link>https://gatsbystarterblogsource.gatsbyjs.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 20 Apr 2021 13:24:58 GMT</lastBuildDate><item><title><![CDATA[[cleancode]3장 함수]]></title><description><![CDATA[…]]></description><link>https://gatsbystarterblogsource.gatsbyjs.io/books/cleancode/3장/</link><guid isPermaLink="false">https://gatsbystarterblogsource.gatsbyjs.io/books/cleancode/3장/</guid><pubDate>Tue, 20 Apr 2021 12:20:29 GMT</pubDate><content:encoded>&lt;h2&gt;3장 함수&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;함수형 프로그래밍&lt;/strong&gt;이 존재할 정도로 함수의 존재는 중요한 요소이다. 함수를 기본단위로 여러 함수를 조합하여 서비스를 만드는 모습은 정말 인상적이었다.&lt;br&gt;
+내가 우연하게 접했던, 작은 프로그램은 시간을 표시해주는 컴포넌트였던거 같다. 아주 단순한 작업들을 함수로 명명한 뒤, 레고 블럭을 조립해서 로봇을 만드는 인상을 받았다.&lt;/p&gt;
+&lt;p&gt;이 장에서도 살짝 언급이 되지만, 함수 자체를 to라는 prefix를 붙여서 서술할 수 있을정도로 작게 나눠서 추상화단계가 함수 내에서는 일정해야한다고 한다.&lt;br&gt;
+추상화라는게 나에게는 정말 이해하기 힘든 개념이지만, 엄청 단순화해서 이해하기로는 흔히 말하는 low-level(하드웨어와 가까운 코드), high-level(어플리케이션과 가까운 코드)처럼&lt;br&gt;
+함수가 하는 작업이 많은 것을 내포하느냐, 단순한 한가지를 하느냐인것 같다. 그래서 저자도 함수의 추상화는 점점 내려가는 방향으로 짜야한다고 하는데, 어렴풋이 이해가 될뿐이다.&lt;/p&gt;
+&lt;p&gt;아래는 내가 이해한 바로 적은 요약본이다.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;함수는 한가지만 하고, 작아야하며, 추상화수준이 동일해야한다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;function printLog(message) {
+    logError(message);
+    logInfo(message);
+    logTrace(message);
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;함수의 인수는 갯수가 작아야한다.: 이해하기도 힘들뿐더러, 테스트 케이스의 갯수도 늘어난다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;function isExist(fileName) {
+    // search file
+    return true; // or false
+}
+function Point(x,y) {
+    this.x = x;
+    this.y = y;
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;switch문을 주의해서 사용해야한다.: 한가지 일만한다는 규칙을 어기며(SRP), switch문의 조건이 늘어난다면 수정사항이 발생하기 때문에, 확장성에 좋지 않다(OCP)&lt;/li&gt;
+&lt;li&gt;서술적인 이름을 사용해라.: 이름이 조금 길다고해도 명확히 표현해주는 함수가 더 읽기도 쉽고, 이해하기도 편한법&lt;/li&gt;
+&lt;li&gt;부수효과(side effect)를 주의해야한다.: 혼자만 작성하는 코드의 경우에는 관계?가 적겠지만, 여러명이서 짜는 코드의 경우에 부수효과로 인해, 디버깅이 어려워 지고, 시간소비가 커질수 있다. 왠만하면 순수함수를 애용하자.&lt;/li&gt;
+&lt;li&gt;오류코드대신 예외를 사용해라: 로직을 try/catch 구문으로 감싼 함수로 추출한다면, 순수로직과 에러처리가 분리될 수 있다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;결국에는 마지막 핵심은 위 내용들을 잘 지키면서, 한번에 잘짜기는 불가능에 가까우니 꾸준히 &lt;strong&gt;리팩토링&lt;/strong&gt;을 하자로 받아들여진다.&lt;/p&gt;
+&lt;div class=&quot;clock&quot;&gt;&lt;/div&gt;
+&lt;script&gt;
+const clock = document.querySelector(&apos;.clock&apos;);
+const now = ()=&gt;new Date();
+const appendZero =(number)=&gt; {return number &lt; 10 ? `0`+number : number};
+const  getHours = (date)=&gt;date.getHours();
+const  getMinutes = (date)=&gt;appendZero(date.getMinutes());
+const getSeconds = (date)=&gt;appendZero(date.getSeconds());
+const toDate = (date)=&gt;{
+    return `${getHours(date)}:${getMinutes(date)}:${getSeconds(date)}`;
+};
+const printTime = (time)=&gt;clock.innerText = time;
+const tick = ()=&gt;[now, toDate, printTime].reduce((a,b)=&gt;{return b(a)},{});
+setInterval(tick,1000);
+&lt;/script&gt;
+## Reference
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.yes24.com/Product/Goods/11681152&quot;&gt;CleanCode&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[[css]stacking-context]]></title><description><![CDATA[stacking context 화면에서 Element를 보여줄 때, Element간에 z축으로 layout을 정하는…]]></description><link>https://gatsbystarterblogsource.gatsbyjs.io/fe/stacking-context/</link><guid isPermaLink="false">https://gatsbystarterblogsource.gatsbyjs.io/fe/stacking-context/</guid><pubDate>Tue, 20 Apr 2021 10:51:54 GMT</pubDate><content:encoded>&lt;h2&gt;stacking context&lt;/h2&gt;
+&lt;p&gt;화면에서 Element를 보여줄 때, Element간에 z축으로 layout을 정하는 3차원 개념이다.&lt;br&gt;
+도통 개념을 이해하지 못하고 있다가 오늘에서야 확실히 이해가 된듯싶다!\&lt;/p&gt;
+&lt;p&gt;쌓임맥락이 새로 생성되는 이유는 많지만 가장 많이 볼 수 있는 조건 중 하나는 position이 absolute거나 relative이면서 z-index가 auto가 아닌 요소이다.&lt;br&gt;
+이 쌓임맥락이 중요한 이유는 쌓임맥락 내에서만 z-index가 유효하기 때문이다. 즉 부모의 쌓임맥락 내에서는 z-index를 기준으로 요소끼리 z축으로 layout되지만,
+부모의 부모 즉 조상요소의 쌓임맥락에서는 부모의 쌓임맥락으로 추상화되어 함께 움직인다.&lt;/p&gt;
+&lt;p&gt;트리의 경우로 비유하자만 dfs 순회를 하듯이 먼저 가장 leaf의 쌓임맥락을 계산을 한 뒤, 부모레벨에서는 부모의 쌓임맥락 값으로 함께 z축으로 이동한다.(즉 자식의 z-index값이 1000, 10000이건 관계없이, 부모의 z-index가 2라면, 부모레벨에서 z-index를 계산할때 2로 계산되어 형제요소(z-index 3)의 아래에 위치하게 된다.)&lt;/p&gt;
+&lt;p&gt;즉 3줄요약하자면&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;z-index는 부모 쌓임맥락에서만 z축으로 layout하는데 기능한다.&lt;/li&gt;
+&lt;li&gt;부모레벨로 한단계 올라갔을경우, 부모의 z-index 레벨로 함께 layout되어 움직인다.&lt;/li&gt;
+&lt;li&gt;즉 1요소가 2요소에의해 가려지는것을 방지하고 싶다면, 1과 2 요소의 공통조상에서 1요소 부모를 2요소 부모보다 z-index값을 높게주면 된다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;style&gt;
+.root {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    padding:10px;
+    border: 1px solid;
+}
+.stacking-context-1 {
+    position: relative;
+    z-index:1;
+    height: 50px;
+}
+.stacking-context-2 {
+    position: absolute;
+    top:25px;
+    left:25px;
+    height:50px;
+}
+.child {
+    width: 50px;
+    height: 50px;
+}
+.stacking-context-1 .child {
+    background: orange;
+}
+.stacking-context-2 .child {
+    background: blue;
+    z-index: 100000;
+}
+.front {
+    z-index: 100;
+}
+button {
+    margin-top: 30px;
+}
+
+&lt;/style&gt;
+&lt;div class=&quot;root&quot;&gt;
+    &lt;div class=&quot;stacking-context-1&quot;&gt;
+        &lt;div class=&quot;child&quot;&gt;
+            child1
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;stacking-context-2&quot;&gt;
+        &lt;div class=&quot;child&quot;&gt;
+            child2
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;button onclick=&quot;toggle();&quot;&gt;위로올리기&lt;/button&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    function toggle() {
+        e=document.querySelector(&apos;.stacking-context-2&apos;);
+        e.classList.toggle(&apos;front&apos;);
+    }
+&lt;/script&gt;</content:encoded></item><item><title><![CDATA[[springboot] mvc]]></title><description><![CDATA[TIL 21-04-18 @SpringBootApplication @EnableAutoConfiguration: 클래스패스의 의존성을 확인하여, 자동으로 필요한 설정들을 세팅해줌( @EnableWebMvc도 포함, starter-web…]]></description><link>https://gatsbystarterblogsource.gatsbyjs.io/spring/mvc/</link><guid isPermaLink="false">https://gatsbystarterblogsource.gatsbyjs.io/spring/mvc/</guid><pubDate>Sun, 18 Apr 2021 10:51:54 GMT</pubDate><content:encoded>&lt;h2&gt;[TIL] 21-04-18&lt;/h2&gt;
+&lt;h3&gt;@SpringBootApplication&lt;/h3&gt;
+&lt;p&gt;@EnableAutoConfiguration: 클래스패스의 의존성을 확인하여, 자동으로 필요한 설정들을 세팅해줌( @EnableWebMvc도 포함, starter-web을 사용한다면..)\&lt;/p&gt;
+&lt;h3&gt;@EnableWebMvc&lt;/h3&gt;
+&lt;p&gt;웹 어플리케이션에 필요한 default HandlerMapping이나 HandlerAdapter같은 기타 mvc에 필요한 bean들을 등록해주는 어노테이션이다.
+customize를 하고싶은 경우에는 WebMvcConfigurer를 구현해서 사용해야한다.&lt;/p&gt;
+&lt;h3&gt;406에러&lt;/h3&gt;
+&lt;p&gt;JacksonMessageConverter가 제대로 세팅되어있지만 406 에러가 난다면, 리턴 클래스의 getter/setter를 확인해보길.. (시간을 얼마나 소모한건지)&lt;/p&gt;
+&lt;h3&gt;UserDeatilsService&lt;/h3&gt;
+&lt;p&gt;기본적인 spring-security의 인증 흐름에서 유저를 id로 검색하는 부분이 있는데 AuthenticationManagerBuilder와 함께 UserDetailsService를 설정해주면 된다.&lt;/p&gt;
+&lt;h3&gt;vm2&lt;/h3&gt;
+&lt;p&gt;일반적으로 내 시스템에서 안전하지 않은 코드를 실행시키려면 javascript의 경우에 vm2를 사용하면 된다.&lt;/p&gt;
+&lt;h2&gt;Reference&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/&quot;&gt;springboot reference doc&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://zzang9ha.tistory.com/320?category=954141&quot;&gt;406error&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[[cleancode]2장 의미있는 이름]]></title><description><![CDATA[2장 의미있는 이름 생각을 해보면 프로그램을 작성하면서 빼놓을 수 없는것이 클래스, 메소드, 변수, 패키지, 프로젝트 등.. 이름을 명명하는 일이 빈번하다. 내 경우를 되돌아본다면 아주 작은 로직을 짤때도 작게는 변수가 3개에서 많게는 1…]]></description><link>https://gatsbystarterblogsource.gatsbyjs.io/books/cleancode/2장/</link><guid isPermaLink="false">https://gatsbystarterblogsource.gatsbyjs.io/books/cleancode/2장/</guid><pubDate>Wed, 14 Apr 2021 10:54:31 GMT</pubDate><content:encoded>&lt;h2&gt;2장 의미있는 이름&lt;/h2&gt;
 &lt;p&gt;생각을 해보면 프로그램을 작성하면서 빼놓을 수 없는것이 클래스, 메소드, 변수, 패키지, 프로젝트 등.. 이름을 명명하는 일이 빈번하다.&lt;br&gt;
 내 경우를 되돌아본다면 아주 작은 로직을 짤때도 작게는 변수가 3개에서 많게는 10개 이상이지만, 변수명 하나하나에 노력을 들였던 것 같지는 않다.&lt;br&gt;
 이 책을 시작으로 내 생각을 짧게나마 글로 옮겨적는 연습을 하려고 한다.\&lt;/p&gt;
